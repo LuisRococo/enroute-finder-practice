@@ -1,10 +1,27 @@
-export type Horoscope = "Aries" | "otro" | "x2";
+import { PossibleInteraction } from './loveHistory';
+import { Match } from './matchList';
 
-export type Genre = "Female" | "Male" | "Other";
+export type Horoscope =
+  | 'Aries'
+  | 'Taurus'
+  | 'Gemini'
+  | 'Cancer'
+  | 'Leo'
+  | 'Virgo'
+  | 'Libra'
+  | 'Scorpio'
+  | 'Sagittarius'
+  | 'Capricorn'
+  | 'Aquarius'
+  | 'Pisces';
 
-export type LookingFor = "Friendship" | "Nothing" | "Long relationship" | "Casual";
+export type Genre = 'Female' | 'Male' | 'Other';
 
-export type PossibleInteraction = "No" | "Yes" | "Super Yes";
+export type LookingFor =
+  | 'Friendship'
+  | 'Nothing'
+  | 'Long relationship'
+  | 'Casual';
 
 //en db se usa mas snake-case
 //tener cuidado con confundirse entre js y bd
@@ -16,7 +33,7 @@ export interface User {
   email: string;
   city?: string;
   country?: string;
-  phone: string,
+  phone: string;
   image_profile: string;
   gallery: string[];
   age: number;
@@ -26,7 +43,7 @@ export interface User {
   looking_for: LookingFor;
   verified: boolean;
   love_history: Interactions[];
-  match_list: string[];
+  match_list: Match[];
 }
 //verified para evitar que se llene de bots
 
@@ -43,41 +60,51 @@ export interface About {
 }
 
 export interface PersonalQuestions {
-  question: string,
-  answer: string
+  question: string;
+  answer: string;
 }
 
-export const mockGeneralUser:User = {
-  _id: "2132434234234235",
-  name: "Lelus",
-  last_name: "Lilus",
-  password: "Password123$",
-  email: "lel@lel.com",
-  city: "Navo",
-  country: "Mexico",
-  phone: "43424342342",
-  image_profile: "http://images2.fanpop.com/images/photos/2700000/erfef-giant-monsters-2772081-225-195.jpg",
-  gallery: ["http://images2.fanpop.com/images/photos/2700000/erfef-giant-monsters-2772081-225-195.jpg", "http://images2.fanpop.com/images/photos/2700000/erfef-giant-monsters-2772081-225-195.jpg", "http://images2.fanpop.com/images/photos/2700000/erfef-giant-monsters-2772081-225-195.jpg"],
+export const mockGeneralUser: User = {
+  _id: '2132434234234235',
+  name: 'Lelus',
+  last_name: 'Lilus',
+  password: 'Password123$',
+  email: 'lel@lel.com',
+  city: 'Navo',
+  country: 'Mexico',
+  phone: '43424342342',
+  image_profile:
+    'http://images2.fanpop.com/images/photos/2700000/erfef-giant-monsters-2772081-225-195.jpg',
+  gallery: [
+    'http://images2.fanpop.com/images/photos/2700000/erfef-giant-monsters-2772081-225-195.jpg',
+    'http://images2.fanpop.com/images/photos/2700000/erfef-giant-monsters-2772081-225-195.jpg',
+    'http://images2.fanpop.com/images/photos/2700000/erfef-giant-monsters-2772081-225-195.jpg',
+  ],
   age: 40,
-  gender: "Male",
-  preferences: "Chicks",
+  gender: 'Male',
+  preferences: 'Chicks',
   about: {
-    description: "Soy un sujeto de pruebas jijijiji",
-    horoscope: "Aries",
-    personal_questions: [{
-      question: "Favorite food ?",
-      answer: "Sushi"
-    },{
-      question: "Movie ?",
-      answer: "The room"
-    }]
+    description: 'Soy un sujeto de pruebas jijijiji',
+    horoscope: 'Aries',
+    personal_questions: [
+      {
+        question: 'Favorite food ?',
+        answer: 'Sushi',
+      },
+      {
+        question: 'Movie ?',
+        answer: 'The room',
+      },
+    ],
   },
-  looking_for: "Friendship",
+  looking_for: 'Friendship',
   verified: true,
   match_list: [],
-  love_history: [{
-    date: new Date(),
-    target_user: "_id2",
-    result: "Yes"
-  }]
-}
+  love_history: [
+    {
+      date: new Date(),
+      target_user: '_id2',
+      result: 'Yes',
+    },
+  ],
+};
