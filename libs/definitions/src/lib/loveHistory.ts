@@ -1,10 +1,10 @@
+export type PossibleInteraction = 'No' | 'Yes' | 'Super yes';
+
 export interface LoveHistory {
   date: Date;
   target_user: string;
   result: PossibleInteraction;
 }
-
-export type PossibleInteraction = 'No' | 'Yes' | 'Super yes';
 
 export const mockLoveHistory: LoveHistory[] = [
   {

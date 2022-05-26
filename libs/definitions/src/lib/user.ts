@@ -1,6 +1,3 @@
-import { PossibleInteraction } from './loveHistory';
-import { Match } from './matchList';
-
 export type Horoscope =
   | 'Aries'
   | 'Taurus'
@@ -15,20 +12,18 @@ export type Horoscope =
   | 'Aquarius'
   | 'Pisces';
 
-export type Genre = 'Female' | 'Male' | 'Other';
+export type Gender = 'Female' | 'Male' | 'Other';
 
-export type LookingFor =
+export type Lookingfor =
   | 'Friendship'
   | 'Nothing'
   | 'Long relationship'
   | 'Casual';
 
-//en db se usa mas snake-case
-//tener cuidado con confundirse entre js y bd
 export interface User {
   _id: string;
   name: string;
-  last_name: string;
+  last_name?: string;
   password: string;
   email: string;
   city?: string;
@@ -37,74 +32,60 @@ export interface User {
   image_profile: string;
   gallery: string[];
   age: number;
-  gender: string;
-  preferences: string;
+  gender: Gender;
+  preference: string;
   about: About;
-  looking_for: LookingFor;
+  lookingfor: Lookingfor;
   verified: boolean;
-  love_history: Interactions[];
-  match_list: Match[];
-}
-//verified para evitar que se llene de bots
-
-export interface Interactions {
-  date: Date;
-  target_user: string;
-  result: PossibleInteraction;
 }
 
 export interface About {
   horoscope?: Horoscope;
-  personal_questions?: PersonalQuestions[];
+  personal_questions?: PersonalQuestion[];
   description: string;
 }
 
-export interface PersonalQuestions {
+export interface PersonalQuestion {
   question: string;
   answer: string;
 }
 
 export const mockGeneralUser: User = {
-  _id: '2132434234234235',
-  name: 'Lelus',
-  last_name: 'Lilus',
+  _id: '_id1',
+  name: 'Probemio',
+  last_name: 'testino',
   password: 'Password123$',
-  email: 'lel@lel.com',
-  city: 'Navo',
-  country: 'Mexico',
-  phone: '43424342342',
+  email: 'probemioT89@test.com',
+  country: 'México',
+  city: 'CDMX',
+  phone: '+525512907846',
   image_profile:
-    'http://images2.fanpop.com/images/photos/2700000/erfef-giant-monsters-2772081-225-195.jpg',
+    'https://pickaface.net/gallery/avatar/unr_test_180821_0925_9k0pgs.png',
   gallery: [
-    'http://images2.fanpop.com/images/photos/2700000/erfef-giant-monsters-2772081-225-195.jpg',
-    'http://images2.fanpop.com/images/photos/2700000/erfef-giant-monsters-2772081-225-195.jpg',
-    'http://images2.fanpop.com/images/photos/2700000/erfef-giant-monsters-2772081-225-195.jpg',
+    'https://pickaface.net/gallery/avatar/unr_test_180821_0925_9k0pgs.png',
+    'https://pickaface.net/gallery/avatar/unr_test_180821_0925_9k0pgs.png',
+    'https://pickaface.net/gallery/avatar/unr_test_180821_0925_9k0pgs.png',
+    'https://pickaface.net/gallery/avatar/unr_test_180821_0925_9k0pgs.png',
+    'https://pickaface.net/gallery/avatar/unr_test_180821_0925_9k0pgs.png',
+    'https://pickaface.net/gallery/avatar/unr_test_180821_0925_9k0pgs.png',
   ],
   age: 40,
-  gender: 'Male',
-  preferences: 'Chicks',
+  gender: 'Other',
+  preference: 'Lo que no sea humano',
   about: {
-    description: 'Soy un sujeto de pruebas jijijiji',
-    horoscope: 'Aries',
+    horoscope: 'Libra',
     personal_questions: [
       {
-        question: 'Favorite food ?',
-        answer: 'Sushi',
+        question: 'What is your favorite food?',
+        answer: 'Hot-Dog',
       },
       {
-        question: 'Movie ?',
-        answer: 'The room',
+        question: 'What is your favorite movie?',
+        answer: 'Joker',
       },
     ],
+    description: "I'm looking a new experience",
   },
-  looking_for: 'Friendship',
+  lookingfor: 'Long relationship',
   verified: true,
-  match_list: [],
-  love_history: [
-    {
-      date: new Date(),
-      target_user: '_id2',
-      result: 'Yes',
-    },
-  ],
 };
