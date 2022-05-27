@@ -1,0 +1,29 @@
+.footer {
+  background-color: rgb(53, 53, 53);
+  padding-top: 6%;
+  padding-bottom: 6%;
+  text-align: center;
+  color: white;
+}
+
+.footer__logo-area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__logo{
+  width: 45px;
+  margin-right: 12px;
+}
+
+.footer__logo-area-text{
+  font-size: 1.3rem;
+  font-weight: bold;
+
+}
+
+.footer__more-info{
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
