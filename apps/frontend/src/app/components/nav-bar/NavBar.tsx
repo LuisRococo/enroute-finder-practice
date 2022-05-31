@@ -1,12 +1,17 @@
 import React, { FC } from 'react';
 import logoImg from '../../../assets/imgs/logo.png';
 import './styles.scss';
-import routes from 'apps/frontend/src/util/routes';
-import { Link } from 'react-router-dom';
+import routes, { routesNoNav } from 'apps/frontend/src/util/routes';
+import { Link, useLocation } from 'react-router-dom';
+import { shouldBeHidden } from 'apps/frontend/src/util/util';
 
 const NavBar: FC = () => {
   const routesArr: any = Object.values(routes);
-  console.info(routesArr);
+  let location = useLocation();
+
+  if (shouldBeHidden(location.pathname, routesNoNav)) {
+    return null;
+  }
 
   return (
     <nav className="nav wrapper">
