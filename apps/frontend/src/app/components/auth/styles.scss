@@ -1,8 +1,6 @@
-@import "../../../styles.scss";
-
 .auth-cont {
   min-height: 100vh;
-  background-color: $main-color;
+  background-color: var(--main-color);
   background-attachment: fixed;
   background: linear-gradient( rgba(221, 221, 221, 0.7), rgba(218, 218, 218, 0.7) ), url('https://ithhostels.com/wp-content/uploads/2021/01/friends.jpg');
   background-repeat: no-repeat;
