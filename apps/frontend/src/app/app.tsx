@@ -8,6 +8,7 @@ import Footer from './components/footer/Footer';
 import routes from '../util/routes';
 import LogIn from './pages/auth/LogIn';
 import SignUp from './pages/auth/SignUp';
+import Find from './pages/find/Find';
 
 export function App() {
   return (
@@ -20,6 +21,8 @@ export function App() {
         <Route path={routes.login.url} element={<LogIn />} />
 
         <Route path={routes.signup.url} element={<SignUp />} />
+
+        <Route path={routes.find.url} element={<Find />} />
       </Routes>
 
       <Footer />

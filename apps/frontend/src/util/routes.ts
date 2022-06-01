@@ -11,6 +11,10 @@ const routes = {
     url: '/sign-up',
     name: 'Sign Up',
   },
+  find: {
+    url: '/find',
+    name: 'Find',
+  },
 };
 
 export const routesNoNav = [routes.login, routes.signup];

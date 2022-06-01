@@ -1,0 +1,86 @@
+.fn-card{
+  width: 400px;
+  min-width: 200px;
+  background-color: white;
+}
+
+.fn-card__border-top {
+  border-radius: 10px 10px 0 0;
+}
+
+.fn-card__border-down {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.fn-card__img-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.fn-card__user-img{
+  width: 100%;
+  height: 550px;
+  object-fit: cover;
+ }
+
+ .fn-card__user-info {
+   background-color: rgba(68, 68, 68, 0.685);
+   color: white;
+   padding: 20px;
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+
+   .fn-card__name {
+     font-size: 1.2rem;
+     font-weight: bold;
+     margin-bottom: 7px;
+   }
+
+   .fn-card__age {
+     font-weight: 400;
+     margin-left: 10px;
+   }
+ }
+
+ .fn-card__options {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 25px 0;
+ }
+
+ .fn-card__more-info-cont {
+   display: flex;
+   align-items: center;
+ }
+
+ .fn-card__more-info {
+   font-size: .8rem;
+   margin-left: 7px;
+ }
+
+ /*BTN*/
+
+ .fn-card__btn {
+   margin: 0 20px;
+   border-radius: 50%;
+   background-color: rgb(240, 240, 240);
+   width: 60px;
+   height: 60px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+ }
+
+ .fn-card__btn:hover {
+  background-color: rgb(230, 230, 230);
+ }
+
+ .fn-card__btn:active {
+  background-color: rgb(217, 217, 217);
+ }
