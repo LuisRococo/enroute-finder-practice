@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { createRef } from 'react';
+// Import Swiper React components
 import FindCard, {
   FindCardInterface,
 } from '../../components/find-card/FindCard';
 import './styles.scss';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
 
 const findCardMockUp: FindCardInterface = {
   image:
@@ -12,12 +16,37 @@ const findCardMockUp: FindCardInterface = {
   gender: 'Female',
 };
 
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+};
+
 const Find = () => {
+  const sliderRef = createRef();
+
   return (
     <div className="pg-find">
-      <div className="pg-find__card-cont">
-        <FindCard {...findCardMockUp} />
-      </div>
+      <Slider {...settings}>
+        <div>
+          <div className="pg-find__card-cont">
+            <FindCard {...findCardMockUp} />
+          </div>
+        </div>
+        <div>
+          <div className="pg-find__card-cont">
+            <FindCard {...findCardMockUp} />
+          </div>
+        </div>
+        <div>
+          <div className="pg-find__card-cont">
+            <FindCard {...findCardMockUp} />
+          </div>
+        </div>
+      </Slider>
     </div>
   );
 };
