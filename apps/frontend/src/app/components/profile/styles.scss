@@ -1,4 +1,4 @@
-.profile-hd {
+.profile-pg__sec {
   background-color: white;
   position: relative;
   border-style: none;
@@ -30,6 +30,7 @@
     width: 100%;
     max-width: 460px;
     object-fit: cover;
+    border-radius: 7px;
   }
 }
 
@@ -107,4 +108,69 @@
 }
 .profile-hd__item-title{
   margin-right: 7px;
+}
+
+// QUESTIONS CARD
+
+.profile-hd__sec--questions {
+  background-color: white;
+  border-radius: 7px;
+  padding: 40px;
+  margin: 7% 0;
+}
+
+.profile-pg__questions-wrapper {
+  overflow: auto;
+}
+
+.profile-pg__question {
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.profile-pg__answer {
+  color: #3d3d3d;
+}
+
+.profile-pg__question-cont {
+  margin-bottom: 15px;
+}
+
+.profile-pg__sec-quest-title {
+  font-size: 1.8rem;
+  text-align: left;
+}
+
+.profile-pg__question-side {
+  flex: 1;
+}
+
+.profile-pg__sec__question-side-cont {
+  display: flex;
+}
+
+.profile-pg__sec__question-side-cont--left {
+  margin-left: 10px;
+}
+
+
+//GALLERY
+
+.profile-pg__gallery-wrapper {
+  overflow: auto;
+}
+
+.p-gallery{
+  margin: 7% 0;
+}
+
+.gallery-img-wrapper {
+  padding: 0 20px;
+}
+
+.gallery-img {
+  width: 100%;
+  border-radius: 7px;
 }

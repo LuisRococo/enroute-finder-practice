@@ -1,7 +1,10 @@
+import { PersonalQuestion } from '@finder/definitions';
 import React from 'react';
+import ProfileGallery from '../../components/profile/ProfileGallery';
 import ProfileHeader, {
   ProfileHeaderInterface,
 } from '../../components/profile/ProfileHeader';
+import ProfileQuestions from '../../components/profile/ProfileQuestions';
 import './styles.scss';
 
 const profileHeaderMockup: ProfileHeaderInterface = {
@@ -21,11 +24,51 @@ const profileHeaderMockup: ProfileHeaderInterface = {
   horoscope: 'Aquarius',
 };
 
+const profileQuestionsMockup: PersonalQuestion[] = [
+  {
+    question: 'What is your favorite food ?',
+    answer: 'Sushi and Mexican food',
+  },
+  {
+    question: 'What is your favorite food ?',
+    answer: 'Sushi and Mexican food',
+  },
+  {
+    question: 'What is your favorite food ?',
+    answer: 'Sushi and Mexican food',
+  },
+  {
+    question: 'What is your favorite food ?',
+    answer: 'Sushi and Mexican food',
+  },
+  {
+    question: 'What is your favorite food ?',
+    answer: 'Sushi and Mexican food',
+  },
+];
+
+const galleryMockup: string[] = [
+  'https://www.okchicas.com/wp-content/uploads/2020/08/outfits-y-conjuntos-con-todo-el-estilo-de-una-e-girl-17.png',
+  'https://www.okchicas.com/wp-content/uploads/2020/08/outfits-y-conjuntos-con-todo-el-estilo-de-una-e-girl-17.png',
+  'https://www.okchicas.com/wp-content/uploads/2020/08/outfits-y-conjuntos-con-todo-el-estilo-de-una-e-girl-17.png',
+  'https://www.okchicas.com/wp-content/uploads/2020/08/outfits-y-conjuntos-con-todo-el-estilo-de-una-e-girl-17.png',
+  'https://www.okchicas.com/wp-content/uploads/2020/08/outfits-y-conjuntos-con-todo-el-estilo-de-una-e-girl-17.png',
+  'https://www.okchicas.com/wp-content/uploads/2020/08/outfits-y-conjuntos-con-todo-el-estilo-de-una-e-girl-17.png',
+];
+
 const Profile = () => {
   return (
     <div className="profile-pg">
       <div className="profile-pg__header-cont wrapper">
         <ProfileHeader {...profileHeaderMockup} />
+      </div>
+
+      <div className="profile-pg__gallery-wrapper wrapper">
+        <ProfileGallery pictures={galleryMockup} />
+      </div>
+
+      <div className="profile-pg__questions-wrapper wrapper">
+        <ProfileQuestions questions={profileQuestionsMockup} />
       </div>
     </div>
   );

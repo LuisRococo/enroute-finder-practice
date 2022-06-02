@@ -37,7 +37,7 @@ const ProfileHeader: FC<ProfileHeaderInterface> = ({
   horoscope,
 }) => {
   return (
-    <div className="profile-hd">
+    <div className="profile-pg__sec">
       <div className="profile-hd__content">
         <div className="profile-hd__img-area">
           <img src={image_profile} alt="" />
