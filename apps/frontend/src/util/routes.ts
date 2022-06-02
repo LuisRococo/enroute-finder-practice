@@ -15,10 +15,14 @@ const routes = {
     url: '/find',
     name: 'Find',
   },
+  profile: {
+    url: '/profile',
+    name: 'Profile',
+  },
 };
 
-export const routesNoNav = [routes.login, routes.signup];
+export const routesHideNav = [routes.login, routes.signup];
 
-export const routesNoFooter = [routes.login, routes.signup];
+export const routesHideFooter = [routes.login, routes.signup];
 
 export default routes;

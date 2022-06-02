@@ -1,0 +1,39 @@
+.profile-hd {
+  background-color: white;
+  position: relative;
+  border-style: none;
+  box-shadow: -7px 7px 23px 10px rgba(18,18,18,0.28);
+-webkit-box-shadow: -7px 7px 23px 10px rgba(18,18,18,0.28);
+-moz-box-shadow: -7px 7px 23px 10px rgba(18,18,18,0.28);
+}
+
+.profile-hd__line-decor {
+  background-color: var(--main-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 33%;
+  z-index: 1;
+  height: 100%;
+}
+
+.profile-hd__content{
+  z-index: 2;
+  position: relative;
+  padding: 70px;
+  display: flex;
+}
+
+.profile-hd__img-area{
+  flex: 1;
+
+  img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+  }
+}
+
+.profile-hd__cont-area{
+  flex: 1;
+}

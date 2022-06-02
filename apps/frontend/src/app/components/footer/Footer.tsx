@@ -3,12 +3,12 @@ import './styles.scss';
 import logoImg from '../../../assets/imgs/logo.png';
 import { useLocation } from 'react-router-dom';
 import { shouldBeHidden } from 'apps/frontend/src/util/util';
-import { routesNoFooter } from 'apps/frontend/src/util/routes';
+import { routesHideFooter } from 'apps/frontend/src/util/routes';
 
 const Footer: FC = () => {
   let location = useLocation();
 
-  if (shouldBeHidden(location.pathname, routesNoFooter)) {
+  if (shouldBeHidden(location.pathname, routesHideFooter)) {
     return null;
   }
 

@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import logoImg from '../../../assets/imgs/logo.png';
 import './styles.scss';
-import routes, { routesNoNav } from 'apps/frontend/src/util/routes';
+import routes, { routesHideNav } from 'apps/frontend/src/util/routes';
 import { Link, useLocation } from 'react-router-dom';
 import { shouldBeHidden } from 'apps/frontend/src/util/util';
 
@@ -12,7 +12,7 @@ const NavBar: FC = () => {
   const [showNav, setShowNav] = useState(true);
 
   useEffect(() => {
-    if (shouldBeHidden(location.pathname, routesNoNav)) {
+    if (shouldBeHidden(location.pathname, routesHideNav)) {
       setShowNav(false);
     } else {
       setShowNav(true);
