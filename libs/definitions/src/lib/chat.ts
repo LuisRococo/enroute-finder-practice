@@ -8,6 +8,13 @@ export interface Chat {
   };
 }
 
+export interface ChatPreview {
+  receiver: string;
+  image_profile: string;
+  last_message: string;
+  date: Date;
+}
+
 export interface Message {
   date: Date;
   content: string;
@@ -51,3 +58,80 @@ export const mockGeneralChat: Chat = {
     },
   ],
 };
+
+export const mockopChats: ChatPreview[] = [
+  {
+    image_profile:
+      'https://thumbs.dreamstime.com/b/charming-happy-asian-female-white-t-shrit-smiling-satisfied-clapping-hands-congratulate-person-win-praising-good-work-well-193061246.jpg',
+    receiver: 'Ana',
+    date: new Date(),
+    last_message: 'Wow que interesante!!',
+  },
+  {
+    image_profile: 'https://engineering.unl.edu/images/staff/Kayla-Person.jpg',
+    receiver: 'Sofia',
+    date: new Date(),
+    last_message: 'Yo estudio medicina en Monterrey',
+  },
+  {
+    image_profile:
+      'https://www.admenergy.com.mx/wp-content/uploads/person1.jpg',
+    receiver: 'Juan',
+    date: new Date(),
+    last_message: '¿Cuales son tus hobbies?',
+  },
+  {
+    image_profile:
+      'https://thumbs.dreamstime.com/b/charming-happy-asian-female-white-t-shrit-smiling-satisfied-clapping-hands-congratulate-person-win-praising-good-work-well-193061246.jpg',
+    receiver: 'Ana',
+    date: new Date(),
+    last_message: 'Wow que interesante!!',
+  },
+  {
+    image_profile: 'https://engineering.unl.edu/images/staff/Kayla-Person.jpg',
+    receiver: 'Sofia',
+    date: new Date(),
+    last_message: 'Yo estudio medicina en Monterrey',
+  },
+  {
+    image_profile:
+      'https://www.admenergy.com.mx/wp-content/uploads/person1.jpg',
+    receiver: 'Juan',
+    date: new Date(),
+    last_message: '¿Cuales son tus hobbies?',
+  },
+  {
+    image_profile:
+      'https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg',
+    receiver: 'Pedro',
+    date: new Date(),
+    last_message: 'Me encanta ese tipo de musica',
+  },
+  {
+    image_profile:
+      'https://thumbs.dreamstime.com/b/charming-happy-asian-female-white-t-shrit-smiling-satisfied-clapping-hands-congratulate-person-win-praising-good-work-well-193061246.jpg',
+    receiver: 'Ana',
+    date: new Date(),
+    last_message: 'Wow que interesante!!',
+  },
+  {
+    image_profile: 'https://engineering.unl.edu/images/staff/Kayla-Person.jpg',
+    receiver: 'Sofia',
+    date: new Date(),
+    last_message: 'Yo estudio medicina en Monterrey',
+  },
+  {
+    image_profile:
+      'https://www.admenergy.com.mx/wp-content/uploads/person1.jpg',
+    receiver: 'Juan',
+    date: new Date(),
+    last_message: '¿Cuales son tus hobbies?',
+  },
+  {
+    image_profile:
+      'https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg',
+    receiver: 'Pedro',
+    date: new Date(),
+    last_message: 'Me encanta ese tipo de musica',
+  },
+];

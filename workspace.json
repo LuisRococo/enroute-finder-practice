@@ -6,6 +6,7 @@
     "backend": "apps/backend",
     "definitions": "libs/definitions",
     "frontend": "apps/frontend",
-    "frontend-e2e": "apps/frontend-e2e"
+    "frontend-e2e": "apps/frontend-e2e",
+    "util": "libs/util"
   }
 }
