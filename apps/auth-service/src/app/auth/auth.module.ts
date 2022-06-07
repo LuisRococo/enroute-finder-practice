@@ -12,7 +12,6 @@ import AuthService from './auth.service';
       secret: process.env.PRIVATE_KEY,
       signOptions: { expiresIn: '60s' },
     }),
-    UserService,
   ],
 })
 export default class AuthModule {}
