@@ -1,20 +1,30 @@
+import {
+  CreateUserDTO,
+  LoginDTO,
+  User,
+  mockupGeneralUserList,
+} from '@finder/definitions';
 import { Injectable } from '@nestjs/common';
+import { info } from 'console';
 import dbEmmulator, {
   UserDbEmmulatorInterface,
 } from 'libs/util/src/lib/dbEmmulator';
 
 @Injectable()
 export default class UserService {
-  getAllUsers(): UserDbEmmulatorInterface[] {
-    return dbEmmulator.getUsers();
+  getUsers(): User[] {
+    return mockupGeneralUserList;
   }
 
-  getUser(username: string): UserDbEmmulatorInterface | undefined {
-    return dbEmmulator.getUser(username);
+  addUser(user: CreateUserDTO): User {
+    return { image_profile: '', _id: '_id1', gallery: [''], ...user };
   }
 
-  addUser(username: string, password: string): void {
-    const newUser: UserDbEmmulatorInterface = { username, password };
-    dbEmmulator.addUser(newUser);
+  findUser(info: LoginDTO): User | undefined {
+    const user: User = mockupGeneralUserList.find(
+      (user) => user.email === info.email && user.password === info.password
+    );
+
+    return user;
   }
 }

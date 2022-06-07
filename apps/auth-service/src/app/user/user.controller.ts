@@ -1,3 +1,4 @@
+import { CreateUserDTO, LoginDTO, User } from '@finder/definitions';
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import UserService from './user.service';
 
@@ -6,18 +7,17 @@ export default class UserController {
   constructor(private userService: UserService) {}
 
   @Get('/')
-  getUsers() {
-    return this.userService.getAllUsers();
-  }
-
-  @Get('/:username')
-  getUser(@Param('username') username: string) {
-    return this.userService.getUser(username);
+  getUsers(): User[] {
+    return this.userService.getUsers();
   }
 
   @Post('/')
-  addUser(@Body() body) {
-    const { username, password } = body;
-    this.userService.addUser(username, password);
+  addUser(@Body() createUserDTO: CreateUserDTO): User {
+    return this.userService.addUser(createUserDTO);
+  }
+
+  @Get('/')
+  findUser(user: LoginDTO): User | undefined {
+    return this.userService.findUser(user);
   }
 }
