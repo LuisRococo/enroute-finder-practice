@@ -33,10 +33,7 @@ function LogIn() {
             className="auth-card__input"
             type="text"
             placeholder="Email"
-            name="email"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            {...formik.getFieldProps('email')}
           />
 
           {formik.touched.password && formik.errors.password ? (
@@ -46,10 +43,7 @@ function LogIn() {
             className="auth-card__input"
             type="password"
             placeholder="Password"
-            name="password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            {...formik.getFieldProps('password')}
           />
 
           <button type="submit" className="btn">
