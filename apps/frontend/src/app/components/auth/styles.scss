@@ -62,3 +62,10 @@
   font-size: 1.0rem;
   color: var(--main-color)
 }
+
+.auth-card__input-error {
+  margin-bottom: 7px;
+  color: rgb(239, 80, 6);
+  font-style: italic;
+  font-size: 0.9rem;
+}
