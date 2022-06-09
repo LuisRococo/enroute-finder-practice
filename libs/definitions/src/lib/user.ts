@@ -1,24 +1,30 @@
-export type Horoscope =
-  | 'Aries'
-  | 'Taurus'
-  | 'Gemini'
-  | 'Cancer'
-  | 'Leo'
-  | 'Virgo'
-  | 'Libra'
-  | 'Scorpio'
-  | 'Sagittarius'
-  | 'Capricorn'
-  | 'Aquarius'
-  | 'Pisces';
+export enum HoroscopeEnum {
+  Aries = 'Aries',
+  Taurus = 'Taurus',
+  Gemini = 'Gemini',
+  Cancer = 'Cancer',
+  Leo = 'Leo',
+  Virgo = 'Virgo',
+  Libra = 'Libra',
+  Scorpio = 'Scorpio',
+  Sagittarius = 'Sagittarius',
+  Capricorn = 'Capricorn',
+  Aquarius = 'Aquarius',
+  Pisces = "Pisces'",
+}
 
-export type Gender = 'Female' | 'Male' | 'Other';
+export enum GenderEnum {
+  Female = 'Female',
+  Male = 'Male',
+  Other = 'Other',
+}
 
-export type Lookingfor =
-  | 'Friendship'
-  | 'Nothing'
-  | 'Long relationship'
-  | 'Casual';
+export enum LookingforEnum {
+  Friendship = 'Friendship',
+  Nothing = 'Nothing',
+  LongRelationship = 'Long relationship',
+  Casual = 'Casual',
+}
 
 export interface User {
   _id: string;
@@ -32,10 +38,10 @@ export interface User {
   image_profile: string;
   gallery: string[];
   age: number;
-  gender: Gender;
+  gender: GenderEnum;
   preference: string;
   about: About;
-  lookingfor: Lookingfor;
+  lookingfor: LookingforEnum;
   verified: boolean;
 }
 
@@ -49,13 +55,13 @@ export interface PersonPreview {
   image_profile: string;
   gallery: string[];
   age: number;
-  gender: Gender;
+  gender: GenderEnum;
   preference: string;
   about: About;
 }
 
 export interface About {
-  horoscope?: Horoscope;
+  horoscope?: HoroscopeEnum;
   personal_questions?: PersonalQuestion[];
   description: string;
 }
@@ -87,10 +93,10 @@ export const mockupGeneralUserList: User[] = [
       'https://pickaface.net/gallery/avatar/unr_test_180821_0925_9k0pgs.png',
     ],
     age: 40,
-    gender: 'Other',
+    gender: GenderEnum.Other,
     preference: 'Lo que no sea humano',
     about: {
-      horoscope: 'Libra',
+      horoscope: HoroscopeEnum.Capricorn,
       personal_questions: [
         {
           question: 'What is your favorite food?',
@@ -103,7 +109,7 @@ export const mockupGeneralUserList: User[] = [
       ],
       description: "I'm looking a new experience",
     },
-    lookingfor: 'Long relationship',
+    lookingfor: LookingforEnum.LongRelationship,
     verified: true,
   },
   {
@@ -127,10 +133,10 @@ export const mockupGeneralUserList: User[] = [
       'https://pickaface.net/gallery/avatar/unr_test_180821_0925_9k0pgs.png',
     ],
     age: 40,
-    gender: 'Other',
+    gender: GenderEnum.Other,
     preference: 'Lo que no sea humano',
     about: {
-      horoscope: 'Libra',
+      horoscope: HoroscopeEnum.Aries,
       personal_questions: [
         {
           question: 'What is your favorite food?',
@@ -143,7 +149,7 @@ export const mockupGeneralUserList: User[] = [
       ],
       description: "I'm looking a new experience",
     },
-    lookingfor: 'Long relationship',
+    lookingfor: LookingforEnum.LongRelationship,
     verified: true,
   },
 ];
@@ -157,10 +163,10 @@ export class CreateUserDTO {
   country?: string;
   phone: string;
   age: number;
-  gender: Gender;
+  gender: GenderEnum;
   preference: string;
   about: About;
-  lookingfor: Lookingfor;
+  lookingfor: LookingforEnum;
   verified = false;
 }
 
@@ -194,10 +200,10 @@ export const mockGeneralUser: User = {
     'https://pickaface.net/gallery/avatar/unr_test_180821_0925_9k0pgs.png',
   ],
   age: 40,
-  gender: 'Other',
+  gender: GenderEnum.Other,
   preference: 'Lo que no sea humano',
   about: {
-    horoscope: 'Libra',
+    horoscope: HoroscopeEnum.Capricorn,
     personal_questions: [
       {
         question: 'What is your favorite food?',
@@ -210,7 +216,7 @@ export const mockGeneralUser: User = {
     ],
     description: "I'm looking a new experience",
   },
-  lookingfor: 'Long relationship',
+  lookingfor: LookingforEnum.LongRelationship,
   verified: true,
 };
 
@@ -233,10 +239,10 @@ export const mockopPersonsPreview: PersonPreview[] = [
       'https://pickaface.net/gallery/avatar/unr_test_180821_0925_9k0pgs.png',
     ],
     age: 40,
-    gender: 'Other',
+    gender: GenderEnum.Other,
     preference: 'Lo que no sea humano',
     about: {
-      horoscope: 'Libra',
+      horoscope: HoroscopeEnum.Aquarius,
       personal_questions: [
         {
           question: 'What is your favorite food?',
@@ -268,10 +274,10 @@ export const mockopPersonsPreview: PersonPreview[] = [
       'https://pickaface.net/gallery/avatar/unr_test_180821_0925_9k0pgs.png',
     ],
     age: 40,
-    gender: 'Other',
+    gender: GenderEnum.Other,
     preference: 'Lo que no sea humano',
     about: {
-      horoscope: 'Libra',
+      horoscope: HoroscopeEnum.Capricorn,
       personal_questions: [
         {
           question: 'What is your favorite food?',
@@ -303,10 +309,10 @@ export const mockopPersonsPreview: PersonPreview[] = [
       'https://pickaface.net/gallery/avatar/unr_test_180821_0925_9k0pgs.png',
     ],
     age: 40,
-    gender: 'Other',
+    gender: GenderEnum.Other,
     preference: 'Lo que no sea humano',
     about: {
-      horoscope: 'Libra',
+      horoscope: HoroscopeEnum.Aquarius,
       personal_questions: [
         {
           question: 'What is your favorite food?',

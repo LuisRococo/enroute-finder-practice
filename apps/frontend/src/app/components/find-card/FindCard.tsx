@@ -3,13 +3,13 @@ import FindCardBtn, { FindCardBtnInterface } from './FindCardBtn';
 import './styles.scss';
 import { FaThumbsDown, FaThumbsUp, FaRegHeart } from 'react-icons/fa';
 import { IoIosHeart, IoIosSquare } from 'react-icons/io';
-import { Gender } from '@finder/definitions';
+import { GenderEnum } from '@finder/definitions';
 
 export interface FindCardInterface {
   image: string;
   name: string;
   age: number;
-  gender: Gender;
+  gender: GenderEnum;
 }
 
 const iconSize = '25px';

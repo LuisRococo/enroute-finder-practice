@@ -1,4 +1,9 @@
-import { About, Gender, Horoscope, Lookingfor } from '@finder/definitions';
+import {
+  About,
+  GenderEnum,
+  HoroscopeEnum,
+  LookingforEnum,
+} from '@finder/definitions';
 import React, { FC } from 'react';
 import ProfileHeadItem from './ProfileHeadItem';
 import ProfileVerified from './ProfileVerified';
@@ -14,11 +19,11 @@ export interface ProfileHeaderInterface {
   country?: string;
   image_profile: string;
   age: number;
-  gender: Gender;
+  gender: GenderEnum;
   preference: string;
-  lookingfor: Lookingfor;
+  lookingfor: LookingforEnum;
   verified: boolean;
-  horoscope?: Horoscope;
+  horoscope?: HoroscopeEnum;
   description: string;
 }
 

@@ -7,13 +7,14 @@ import './styles.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
+import { GenderEnum } from '@finder/definitions';
 
 const findCardMockUp: FindCardInterface = {
   image:
     'https://www.okchicas.com/wp-content/uploads/2020/08/outfits-y-conjuntos-con-todo-el-estilo-de-una-e-girl-17.png',
   name: 'Susana Horia',
   age: 24,
-  gender: 'Female',
+  gender: GenderEnum.Female,
 };
 
 const settings = {
