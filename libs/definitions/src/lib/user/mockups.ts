@@ -1,79 +1,16 @@
-export enum HoroscopeEnum {
-  Aries = 'Aries',
-  Taurus = 'Taurus',
-  Gemini = 'Gemini',
-  Cancer = 'Cancer',
-  Leo = 'Leo',
-  Virgo = 'Virgo',
-  Libra = 'Libra',
-  Scorpio = 'Scorpio',
-  Sagittarius = 'Sagittarius',
-  Capricorn = 'Capricorn',
-  Aquarius = 'Aquarius',
-  Pisces = "Pisces'",
-}
-
-export enum GenderEnum {
-  Female = 'Female',
-  Male = 'Male',
-  Other = 'Other',
-}
-
-export enum LookingforEnum {
-  Friendship = 'Friendship',
-  Nothing = 'Nothing',
-  LongRelationship = 'Long relationship',
-  Casual = 'Casual',
-}
-
-export interface User {
-  _id: string;
-  name: string;
-  last_name?: string;
-  password: string;
-  email: string;
-  city?: string;
-  country?: string;
-  phone: string;
-  image_profile: string;
-  gallery: string[];
-  age: number;
-  gender: GenderEnum;
-  preference: string;
-  about: About;
-  lookingfor: LookingforEnum;
-  verified: boolean;
-}
-
-export interface PersonPreview {
-  _id: string;
-  name: string;
-  last_name?: string;
-  city?: string;
-  country?: string;
-  phone: string;
-  image_profile: string;
-  gallery: string[];
-  age: number;
-  gender: GenderEnum;
-  preference: string;
-  about: About;
-}
-
-export interface About {
-  horoscope?: HoroscopeEnum;
-  personal_questions?: PersonalQuestion[];
-  description: string;
-}
-
-export interface PersonalQuestion {
-  question: string;
-  answer: string;
-}
+import {
+  GenderEnum,
+  HoroscopeEnum,
+  LookingforEnum,
+  PersonPreview,
+  User,
+} from './types';
+import { Types } from 'mongoose';
+import { mockPersonalQuestionsList } from '../personalQuestions/mockups';
 
 export const mockupGeneralUserList: User[] = [
   {
-    _id: '_id1',
+    _id: new Types.ObjectId(),
     name: 'Probemio',
     last_name: 'testino',
     password:
@@ -97,23 +34,14 @@ export const mockupGeneralUserList: User[] = [
     preference: 'Lo que no sea humano',
     about: {
       horoscope: HoroscopeEnum.Capricorn,
-      personal_questions: [
-        {
-          question: 'What is your favorite food?',
-          answer: 'Hot-Dog',
-        },
-        {
-          question: 'What is your favorite movie?',
-          answer: 'Joker',
-        },
-      ],
+      personal_questions: mockPersonalQuestionsList,
       description: "I'm looking a new experience",
     },
     lookingfor: LookingforEnum.LongRelationship,
     verified: true,
   },
   {
-    _id: '_id2',
+    _id: new Types.ObjectId(),
     name: 'Probemio',
     last_name: 'testino',
     password:
@@ -137,16 +65,7 @@ export const mockupGeneralUserList: User[] = [
     preference: 'Lo que no sea humano',
     about: {
       horoscope: HoroscopeEnum.Aries,
-      personal_questions: [
-        {
-          question: 'What is your favorite food?',
-          answer: 'Hot-Dog',
-        },
-        {
-          question: 'What is your favorite movie?',
-          answer: 'Joker',
-        },
-      ],
+      personal_questions: mockPersonalQuestionsList,
       description: "I'm looking a new experience",
     },
     lookingfor: LookingforEnum.LongRelationship,
@@ -154,33 +73,8 @@ export const mockupGeneralUserList: User[] = [
   },
 ];
 
-export class CreateUserDTO {
-  name: string;
-  last_name?: string;
-  password: string;
-  email: string;
-  city?: string;
-  country?: string;
-  phone: string;
-  age: number;
-  gender: GenderEnum;
-  preference: string;
-  about: About;
-  lookingfor: LookingforEnum;
-  verified = false;
-}
-
-export class LoginDTO {
-  email: string;
-  password: string;
-}
-
-export class AuthDAO {
-  jwt: string;
-}
-
 export const mockGeneralUser: User = {
-  _id: '_id1',
+  _id: new Types.ObjectId(),
   name: 'Probemio',
   last_name: 'testino',
   password:
@@ -204,16 +98,7 @@ export const mockGeneralUser: User = {
   preference: 'Lo que no sea humano',
   about: {
     horoscope: HoroscopeEnum.Capricorn,
-    personal_questions: [
-      {
-        question: 'What is your favorite food?',
-        answer: 'Hot-Dog',
-      },
-      {
-        question: 'What is your favorite movie?',
-        answer: 'Joker',
-      },
-    ],
+    personal_questions: mockPersonalQuestionsList,
     description: "I'm looking a new experience",
   },
   lookingfor: LookingforEnum.LongRelationship,
@@ -243,16 +128,7 @@ export const mockopPersonsPreview: PersonPreview[] = [
     preference: 'Lo que no sea humano',
     about: {
       horoscope: HoroscopeEnum.Aquarius,
-      personal_questions: [
-        {
-          question: 'What is your favorite food?',
-          answer: 'Hot-Dog',
-        },
-        {
-          question: 'What is your favorite movie?',
-          answer: 'Joker',
-        },
-      ],
+      personal_questions: mockPersonalQuestionsList,
       description: "I'm looking a new experience",
     },
   },
@@ -278,16 +154,7 @@ export const mockopPersonsPreview: PersonPreview[] = [
     preference: 'Lo que no sea humano',
     about: {
       horoscope: HoroscopeEnum.Capricorn,
-      personal_questions: [
-        {
-          question: 'What is your favorite food?',
-          answer: 'Hot-Dog',
-        },
-        {
-          question: 'What is your favorite movie?',
-          answer: 'Joker',
-        },
-      ],
+      personal_questions: mockPersonalQuestionsList,
       description: "I'm looking a new experience",
     },
   },
@@ -313,16 +180,7 @@ export const mockopPersonsPreview: PersonPreview[] = [
     preference: 'Lo que no sea humano',
     about: {
       horoscope: HoroscopeEnum.Aquarius,
-      personal_questions: [
-        {
-          question: 'What is your favorite food?',
-          answer: 'Hot-Dog',
-        },
-        {
-          question: 'What is your favorite movie?',
-          answer: 'Joker',
-        },
-      ],
+      personal_questions: mockPersonalQuestionsList,
       description: "I'm looking a new experience",
     },
   },
