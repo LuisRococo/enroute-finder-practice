@@ -5,3 +5,4 @@ export * from './lib/loveHistory/index';
 export * from './lib/match/index';
 export * from './lib/user/index';
 export * from './lib/personalQuestions/index';
+export * from './lib/about/index';
