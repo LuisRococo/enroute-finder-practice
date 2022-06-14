@@ -1,5 +1,5 @@
-import { AuthDAO, LoginDTO, User } from '@finder/definitions';
-import { Injectable } from '@nestjs/common';
+import { AuthDAO, LoginDTO, User, validateUserDTO } from '@finder/definitions';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import UserService from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { UserDocument } from '../../models/user';
@@ -22,5 +22,10 @@ export default class AuthService {
       return {
          jwt: this.jwtService.sign(payload, { algorithm: 'HS512' }),
       };
+   }
+
+   async validateUser(userInfo: LoginDTO) {
+      const user = await this.userService.findUserByLogin(userInfo);
+      return user;
    }
 }

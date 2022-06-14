@@ -13,7 +13,7 @@
     "@nestjs/core": "^8.0.0",
     "@nestjs/jwt": "^8.0.1",
     "@nestjs/mongoose": "^9.1.0",
-    "@nestjs/passport": "^8.2.1",
+    "@nestjs/passport": "^8.2.2",
     "@nestjs/platform-express": "^8.0.0",
     "@types/react-image-gallery": "^1.0.5",
     "@types/react-slick": "^0.23.8",
