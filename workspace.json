@@ -1,12 +1,11 @@
 {
-  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
-  "version": 2,
-  "projects": {
-    "auth-service": "apps/auth-service",
-    "backend": "apps/backend",
-    "definitions": "libs/definitions",
-    "frontend": "apps/frontend",
-    "frontend-e2e": "apps/frontend-e2e",
-    "util": "libs/util"
-  }
+   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+   "version": 2,
+   "projects": {
+      "auth-service": "apps/auth-service",
+      "definitions": "libs/definitions",
+      "frontend": "apps/frontend",
+      "frontend-e2e": "apps/frontend-e2e",
+      "util": "libs/util"
+   }
 }

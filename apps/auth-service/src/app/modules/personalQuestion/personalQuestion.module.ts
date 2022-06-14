@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AboutSchema } from '../../models/about';
+import { PersonalQuestionSchema } from '../../models/personalQuestion';
 import PersonalQuestionController from './personalQuestion.controller';
 import PersonalQuestionService from './personalQuestion.service';
 
@@ -9,7 +9,7 @@ import PersonalQuestionService from './personalQuestion.service';
       MongooseModule.forFeature([
          {
             name: 'PersonalQuestion',
-            schema: AboutSchema,
+            schema: PersonalQuestionSchema,
          },
       ]),
    ],

@@ -11,11 +11,13 @@ export default class AboutService {
    constructor(private readonly personalQuestionService: PersonalQuestionService, @InjectModel('About') private aboutModel: Model<AboutDocument>) {}
 
    async createAbout(aboutDTO: CreateAboutDTO): Promise<AboutDocument> {
+      console.log(aboutDTO);
+
       const createdQuestions: PersonalQuestionDocument[] = await this.personalQuestionService.createQuestions(aboutDTO.personal_questions);
       const createdAbout: AboutDocument = await this.aboutModel.create({
          ...aboutDTO,
          _id: new Types.ObjectId(),
-         personal_questions: createdQuestions,
+         personal_questions: createdQuestions.map((question) => question._id),
       });
 
       return createdAbout;
