@@ -5,6 +5,7 @@ import { About } from '../about';
 export class CreateUserDTO {
    name: string;
    last_name?: string;
+   image_profile: string;
    password: string;
    email: string;
    city?: string;

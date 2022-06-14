@@ -6,7 +6,6 @@ import { AboutDocument } from './about';
 export class UserMongo implements User {
    @Prop({
       type: SchemaMongoose.Types.ObjectId,
-      default: new Types.ObjectId(),
    })
    _id: Types.ObjectId;
    @Prop({ type: String, required: true })

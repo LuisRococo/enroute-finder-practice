@@ -1,7 +1,7 @@
 import { CreateUserDTO, GetUserDTO, GetUsersDTO, LoginDTO } from '@finder/definitions';
 import { Get, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { UserDocument } from '../../models/user';
 import AboutService from '../about/about.service';
 
@@ -32,6 +32,7 @@ export default class UserService {
       const createdAbout = await this.aboutService.createAbout(user.about);
 
       const createdUser = await this.userModel.create({
+         _id: new Types.ObjectId(),
          ...user,
          about: createdAbout._id,
       });
