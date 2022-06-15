@@ -1,9 +1,9 @@
 import { Strategy } from 'passport-local';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import AuthService from './auth.service';
 import { LoginDTO } from '@finder/definitions';
-import { UserDocument } from '../../models/user';
+import { UserDocument } from '../../../models/user';
+import AuthService from '../auth.service';
 
 //THE FUNCTION OF THIS IS TO VALIDATE IF THE USER EXISTS BEFORE ENTERING THE LOGIN ROUTE
 //I VALIDATES THAT THE USER EXISTS
