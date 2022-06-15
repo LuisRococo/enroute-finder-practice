@@ -16,6 +16,7 @@
       "strictPropertyInitialization": false,
       "baseUrl": ".",
       "paths": {
+         "@finder/components": ["libs/components/src/index.ts"],
          "@finder/definitions": ["libs/definitions/src/index.ts"],
          "@finder/util": ["libs/util/src/index.ts"]
       }
