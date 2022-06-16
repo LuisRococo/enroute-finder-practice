@@ -31,11 +31,27 @@ function LogIn() {
       <>
          <form onSubmit={formik.handleSubmit}>
             <AuthCont title="Log In To start meeting people!">
-               {formik.touched.email && formik.errors.email ? <p className="auth-card__input-error ">{formik.errors.email}</p> : null}
-               <input className="auth-card__input" type="text" placeholder="Email" {...formik.getFieldProps('email')} />
+               <FilledInput
+                  {...formik.getFieldProps('email')}
+                  errorMsjProps={{}}
+                  labelProps={{}}
+                  containerProps={{ className: 'auth-card__input-cont' }}
+                  error={formik.touched.email && formik.errors.email !== undefined}
+                  errorText={formik.errors.email}
+                  labelText="Email"
+                  className="auth-card__input"
+               />
 
-               {formik.touched.password && formik.errors.password ? <p className="auth-card__input-error ">{formik.errors.password}</p> : null}
-               <input className="auth-card__input" type="password" placeholder="Password" {...formik.getFieldProps('password')} />
+               <FilledInput
+                  {...formik.getFieldProps('password')}
+                  errorMsjProps={{}}
+                  labelProps={{}}
+                  containerProps={{ className: 'auth-card__input-cont' }}
+                  error={formik.touched.password && formik.errors.password !== undefined}
+                  errorText={formik.errors.password}
+                  labelText="Password"
+                  className="auth-card__input"
+               />
 
                <Button className="btn" text="Submit" type="submit" />
 

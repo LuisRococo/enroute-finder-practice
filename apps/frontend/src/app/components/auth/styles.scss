@@ -46,14 +46,15 @@
   flex: 1 1 auto;
 }
 
-.auth-card__input {
+.auth-card__input.auth-card__input {
   padding: 13px 7px;
-  font-size: 1.2rem;
-  color: rgb(75, 75, 75);
+  font-size: 1.1rem;
   width: 100%;
-  border-style: none;
-  text-align: center;
-  margin-bottom: 25px;
+  border-color: rgb(143, 143, 143);
+}
+
+.auth-card__input-cont.auth-card__input-cont{
+  margin-bottom: 10px;
 }
 
 .autn-card__link {
