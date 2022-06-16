@@ -1,8 +1,5 @@
 import { DetailedHTMLProps, FC } from 'react';
 import './styles.scss';
-import styles from './test.module.scss';
-
-console.info(styles);
 
 /* eslint-disable-next-line */
 interface Props extends DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {

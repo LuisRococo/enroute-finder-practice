@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import Components from './components';
+import FilledInput from './filled-input';
 
-describe('Components', () => {
+describe('FilledInput', () => {
    it('should render successfully', () => {
-      const { baseElement } = render(<Components />);
+      const { baseElement } = render(<FilledInput />);
       expect(baseElement).toBeTruthy();
    });
 });

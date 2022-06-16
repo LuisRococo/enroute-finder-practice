@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AuthCont from '../../components/auth/AuthCont';
 import routes from '../../../util/routes';
@@ -6,7 +6,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { LoginDTO } from '@finder/definitions';
 import { LoginFormValidation } from './FormConfig';
-import { Button } from '@finder/components';
+import { Button, FilledInput } from '@finder/components';
 
 function LogIn() {
    const formik = useFormik({
@@ -22,6 +22,10 @@ function LogIn() {
       const { email, password } = values;
       alert('submit');
    }
+
+   useEffect(() => {
+      console.log(formik.errors.email);
+   }, [formik.values.email]);
 
    return (
       <>

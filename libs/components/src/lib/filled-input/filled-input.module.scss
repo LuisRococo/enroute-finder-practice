@@ -1,0 +1,40 @@
+.invisible {
+  visibility: hidden;
+}
+
+.input-container {
+
+  height: 100px;
+
+  .error-msj{
+    color: rgb(192, 28, 7);
+    font-style: italic;
+    font-size: .8rem;
+    margin-bottom: 5px;
+  }
+
+  label{
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: rgb(60, 60, 60);
+    display: block;
+    margin-bottom: 0px;
+    transform: translate(0px, 15px);
+    transition: transform 0.5s;
+  }
+
+  .label-error {
+    transform: translate(0px, 0px);
+  }
+
+  .input{
+    font-size: 1.1rem;
+    padding: 12px 10px;
+    border-style: solid;
+  }
+
+  .input-error {
+    color: rgb(192, 28, 7);
+    border-color: rgb(192, 28, 7);
+  }
+}
