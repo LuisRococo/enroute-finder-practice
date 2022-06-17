@@ -4,9 +4,11 @@ import AuthCont from '../../components/auth/AuthCont';
 import routes from '../../../util/routes';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { LoginDTO } from '@finder/definitions';
+import { AuthDAO, LoginDTO } from '@finder/definitions';
 import { LoginFormValidation } from './FormConfig';
 import { Button, FilledInput } from '@finder/components';
+import { loginService } from '../../services/authServices';
+import { saveAuthToken } from 'apps/auth-front/src/util/util';
 
 function LogIn() {
    const formik = useFormik({
@@ -18,9 +20,14 @@ function LogIn() {
       onSubmit: onFormSubmit,
    });
 
-   function onFormSubmit(values: LoginDTO) {
-      const { email, password } = values;
-      alert('submit');
+   async function onFormSubmit(values: LoginDTO) {
+      try {
+         const authDao: AuthDAO = await loginService(values);
+         saveAuthToken(authDao);
+      } catch (error: any) {
+         formik.values.password = '';
+         alert('check your email and password');
+      }
    }
 
    return (
