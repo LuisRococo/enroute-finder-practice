@@ -1,0 +1,28 @@
+{
+   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+   "sourceRoot": "apps/auth-front-e2e/src",
+   "projectType": "application",
+   "targets": {
+      "e2e": {
+         "executor": "@nrwl/cypress:cypress",
+         "options": {
+            "cypressConfig": "apps/auth-front-e2e/cypress.json",
+            "devServerTarget": "auth-front:serve:development"
+         },
+         "configurations": {
+            "production": {
+               "devServerTarget": "auth-front:serve:production"
+            }
+         }
+      },
+      "lint": {
+         "executor": "@nrwl/linter:eslint",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "lintFilePatterns": ["apps/auth-front-e2e/**/*.{js,ts}"]
+         }
+      }
+   },
+   "tags": [],
+   "implicitDependencies": ["auth-front"]
+}
