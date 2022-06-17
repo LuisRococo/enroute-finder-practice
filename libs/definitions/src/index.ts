@@ -7,3 +7,4 @@ export * from './lib/user/index';
 export * from './lib/personalQuestions/index';
 export * from './lib/about/index';
 export * from './lib/localStorage/index';
+export * from './lib/events/index';

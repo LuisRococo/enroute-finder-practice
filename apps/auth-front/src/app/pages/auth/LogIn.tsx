@@ -4,7 +4,7 @@ import AuthCont from '../../components/auth/AuthCont';
 import routes from '../../../util/routes';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { AuthDAO, LoginDTO } from '@finder/definitions';
+import { AuthDAO, FRONT_EVENT_NAMES, LoginDTO } from '@finder/definitions';
 import { LoginFormValidation } from './FormConfig';
 import { Button, FilledInput } from '@finder/components';
 import { loginService } from '../../services/authServices';
@@ -24,6 +24,7 @@ function LogIn() {
       try {
          const authDao: AuthDAO = await loginService(values);
          saveAuthToken(authDao);
+         window.dispatchEvent(new Event(FRONT_EVENT_NAMES.SET_AUTH_TOKEN));
       } catch (error: any) {
          formik.values.password = '';
          alert('check your email and password');
