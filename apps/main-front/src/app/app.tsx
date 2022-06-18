@@ -9,24 +9,55 @@ import routes from '../util/routes';
 import Find from './pages/find/Find';
 import Profile from './pages/profile/Profile';
 import React from 'react';
+import { GenericProtectedRoute } from '@finder/components';
+import { useIsAuth } from './hooks/authHook';
 
 const AuthFront = React.lazy(() => import('auth-front/Module'));
 
 export function App() {
+   const { isAuth } = useIsAuth();
    return (
       <React.Suspense fallback={null}>
          <NavBar />
 
          <Routes>
+            <Route
+               path={routes.find.url}
+               element={
+                  <GenericProtectedRoute isAuth={isAuth}>
+                     <Find />
+                  </GenericProtectedRoute>
+               }
+            />
+
+            <Route
+               path={routes.profile.url}
+               element={
+                  <GenericProtectedRoute isAuth={isAuth}>
+                     <Profile />
+                  </GenericProtectedRoute>
+               }
+            />
+
+            <Route
+               path={routes.login.url}
+               element={
+                  <GenericProtectedRoute isAuth={!isAuth}>
+                     <AuthFront />
+                  </GenericProtectedRoute>
+               }
+            />
+
+            <Route
+               path={routes.signup.url}
+               element={
+                  <GenericProtectedRoute isAuth={!isAuth}>
+                     <AuthFront />
+                  </GenericProtectedRoute>
+               }
+            />
+
             <Route path={routes.home.url} element={<Home />} />
-
-            <Route path={routes.login.url} element={<AuthFront />} />
-
-            <Route path={routes.signup.url} element={<AuthFront />} />
-
-            <Route path={routes.find.url} element={<Find />} />
-
-            <Route path={routes.profile.url} element={<Profile />} />
          </Routes>
 
          <Footer />
