@@ -7,8 +7,6 @@
       "auth-service": "apps/auth-service",
       "components": "libs/components",
       "definitions": "libs/definitions",
-      "frontend": "apps/frontend",
-      "frontend-e2e": "apps/frontend-e2e",
       "main-front": "apps/main-front",
       "main-front-e2e": "apps/main-front-e2e",
       "util": "libs/util"
