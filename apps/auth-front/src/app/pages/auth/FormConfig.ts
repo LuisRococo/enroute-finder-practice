@@ -2,14 +2,8 @@ import { LoginDTO } from '@finder/definitions';
 import * as yup from 'Yup';
 
 export const LoginFormValidation: yup.SchemaOf<LoginDTO> = yup.object({
-  email: yup
-    .string()
-    .max(15, 'Email should be 15 characters or less')
-    .required('Email is required'),
-  password: yup
-    .string()
-    .max(15, 'Password should be 15 characters or less')
-    .required('Password is required'),
+   email: yup.string().max(30, 'Email should be 30 characters or less').required('Email is required'),
+   password: yup.string().max(30, 'Password should be 30 characters or less').required('Password is required'),
 });
 
 // function valiateForm(values: any) {

@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import AuthCont from '../../components/auth/AuthCont';
 import routes from '../../../util/routes';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
 import { AuthDAO, FRONT_EVENT_NAMES, LoginDTO } from '@finder/definitions';
 import { LoginFormValidation } from './FormConfig';
 import { Button, FilledInput } from '@finder/components';
 import { loginService } from '../../services/authServices';
 import { saveAuthToken } from 'apps/auth-front/src/util/util';
+import './styles.scss';
+import { LoginLogo } from '../../components/LoginLogo';
+import { AiFillHeart } from 'react-icons/ai';
 
 function LogIn() {
    const formik = useFormik({
@@ -33,38 +34,50 @@ function LogIn() {
 
    return (
       <>
-         <form onSubmit={formik.handleSubmit}>
-            <AuthCont title="Log In To start meeting people!">
-               <FilledInput
-                  {...formik.getFieldProps('email')}
-                  errorMsjProps={{}}
-                  labelProps={{}}
-                  containerProps={{ className: 'auth-card__input-cont' }}
-                  error={formik.touched.email && formik.errors.email !== undefined}
-                  errorText={formik.errors.email}
-                  labelText="Email"
-                  className="auth-card__input"
-               />
+         <div className="auth-page">
+            <div className="auth-div auth-form-area">
+               <div className="auth-form-cont">
+                  <LoginLogo />
 
-               <FilledInput
-                  {...formik.getFieldProps('password')}
-                  errorMsjProps={{}}
-                  labelProps={{}}
-                  containerProps={{ className: 'auth-card__input-cont' }}
-                  error={formik.touched.password && formik.errors.password !== undefined}
-                  errorText={formik.errors.password}
-                  labelText="Password"
-                  className="auth-card__input"
-                  type={'password'}
-               />
+                  <form onSubmit={formik.handleSubmit}>
+                     <FilledInput
+                        {...formik.getFieldProps('email')}
+                        errorMsjProps={{}}
+                        labelProps={{}}
+                        containerProps={{ className: 'auth-card__input-cont' }}
+                        error={formik.touched.email && formik.errors.email !== undefined}
+                        errorText={formik.errors.email}
+                        labelText="Email"
+                        className="auth-card__input"
+                     />
 
-               <Button className="btn" text="Submit" type="submit" />
+                     <FilledInput
+                        {...formik.getFieldProps('password')}
+                        errorMsjProps={{}}
+                        labelProps={{}}
+                        containerProps={{ className: 'auth-card__input-cont' }}
+                        error={formik.touched.password && formik.errors.password !== undefined}
+                        errorText={formik.errors.password}
+                        labelText="Password"
+                        className="auth-card__input"
+                        type={'password'}
+                     />
 
-               <Link className="autn-card__link" to={routes.signup.url}>
-                  Sign Up
-               </Link>
-            </AuthCont>
-         </form>
+                     <Button className="login-btn" text="Submit" type="submit" />
+
+                     <Link className="autn-card__link" to={routes.signup.url}>
+                        Sign Up
+                     </Link>
+                  </form>
+               </div>
+            </div>
+            <div className="auth-div auth-div--promo-area">
+               <div className="promo-message-cont">
+                  <AiFillHeart className="promo-message-icon" />
+                  <h2>Discover new Frienships without frontiers</h2>
+               </div>
+            </div>
+         </div>
       </>
    );
 }

@@ -1,12 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
-// $main-color: #8c2ae8;
-// $second-color: rgb(255, 167, 43);
-@import "~react-image-gallery/styles/scss/image-gallery.scss";
-
 :root {
   --main-color: #963de9;
   --second-color: rgb(255, 167, 43);
   --dark-gray-color: rgb(112, 112, 112);
+
+  --bg-transparency-main-color: #461e6c87;
 }
 
 body {
@@ -27,7 +24,6 @@ body {
 
 a, a:hover, a:focus, a:active {
   text-decoration: none;
-  color: inherit;
 }
 
 /* BUTTON */

@@ -1,0 +1,67 @@
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  background-color: white;
+}
+
+.auth-div {
+  flex: 1;
+}
+
+.auth-div--promo-area {
+  background: linear-gradient( var(--bg-transparency-main-color), var(--bg-transparency-main-color)) , url('../../../assets/img/love-bg.jpeg');
+  background-color: var(--main-color);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .promo-message-cont {
+    padding: 5%;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .promo-message-icon {
+    color: white;
+    font-size: 100px;
+    margin-bottom: 20px;
+  }
+
+  h2{
+    color: white;
+    font-size: 2.8rem;
+    font-weight: bold;
+  }
+}
+
+.auth-form-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-form-cont {
+  width: 400px;
+
+  input {
+    width: 100%;
+  }
+
+  .login-btn.login-btn {
+    width: 100%;
+    display: block;
+    background-color: var(--main-color);
+  }
+}
+
+.autn-card__link {
+  float: right;
+  margin-top: 20px;
+  color: var(--main-color);
+}
+
+.autn-card__link:hover {
+  color: rgb(95, 19, 105);
+}
