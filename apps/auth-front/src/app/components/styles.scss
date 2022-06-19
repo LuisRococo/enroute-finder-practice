@@ -1,0 +1,17 @@
+.login-logo-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  h3{
+    font-size: 2.7rem;
+    color: rgb(84, 84, 84);
+  }
+}
+
+.login-logo-icon {
+  color: var(--main-color);
+  font-size: 70px;
+  margin-right: 10px;
+}
