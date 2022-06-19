@@ -13,6 +13,7 @@ import { GenericProtectedRoute } from '@finder/components';
 import { useIsAuth } from './hooks/authHook';
 
 const AuthFront = React.lazy(() => import('auth-front/Module'));
+const redirectTo = routes.login.url;
 
 export function App() {
    const { isAuth } = useIsAuth();
@@ -24,7 +25,7 @@ export function App() {
             <Route
                path={routes.find.url}
                element={
-                  <GenericProtectedRoute isAuth={isAuth}>
+                  <GenericProtectedRoute isAuth={isAuth} redirectTo={redirectTo}>
                      <Find />
                   </GenericProtectedRoute>
                }
@@ -33,7 +34,7 @@ export function App() {
             <Route
                path={routes.profile.url}
                element={
-                  <GenericProtectedRoute isAuth={isAuth}>
+                  <GenericProtectedRoute isAuth={isAuth} redirectTo={redirectTo}>
                      <Profile />
                   </GenericProtectedRoute>
                }

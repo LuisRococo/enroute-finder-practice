@@ -52,12 +52,37 @@
       align-items: center;
       padding: 0 15px;
       font-size: 1.0rem;
+      cursor: pointer;
 
       &:hover{
         background-color: var(--dark-gray-color);
       }
     }
 
-
   }
+}
+
+.nav__dropdown-cont {
+  position: relative;
+}
+
+.nav__dropdown {
+  min-width: 130px;
+  background-color: rgb(228, 228, 228);
+  position: absolute;
+  right: 0;
+}
+
+.nav__dropdown-item {
+  padding: 15px 15px;
+  cursor: pointer;
+
+   p{
+    font-size: 1rem;
+    color: rgb(112, 112, 112);
+   }
+}
+
+.nav__dropdown-item:hover{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.13) 0 0);
 }

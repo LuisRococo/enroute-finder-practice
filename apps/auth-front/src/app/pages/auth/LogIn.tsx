@@ -55,6 +55,7 @@ function LogIn() {
                   errorText={formik.errors.password}
                   labelText="Password"
                   className="auth-card__input"
+                  type={'password'}
                />
 
                <Button className="btn" text="Submit" type="submit" />

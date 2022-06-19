@@ -14,3 +14,8 @@ export function setLocalStorageToken(token: string) {
    localStorage.setItem(LOCAL_STORAGE_KEYS.AUTH_TOKEN, token);
    window.dispatchEvent(new Event(FRONT_EVENT_NAMES.SET_AUTH_TOKEN));
 }
+
+export function logoutUser() {
+   localStorage.removeItem(LOCAL_STORAGE_KEYS.AUTH_TOKEN);
+   window.dispatchEvent(new Event(FRONT_EVENT_NAMES.SET_AUTH_TOKEN));
+}

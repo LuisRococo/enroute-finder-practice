@@ -4,11 +4,12 @@ import { Navigate } from 'react-router-dom';
 export interface AuthProtectedRouteProps {
    children: JSX.Element;
    isAuth: boolean;
+   redirectTo?: string;
 }
 
-export const GenericProtectedRoute: FC<AuthProtectedRouteProps> = ({ children, isAuth }) => {
+export const GenericProtectedRoute: FC<AuthProtectedRouteProps> = ({ children, isAuth, redirectTo = '/' }) => {
    if (!isAuth) {
-      return <Navigate to="/" replace />;
+      return <Navigate to={redirectTo} replace />;
    }
 
    return children;

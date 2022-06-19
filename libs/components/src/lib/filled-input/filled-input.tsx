@@ -18,7 +18,7 @@ export const FilledInput: FC<FilledInputProps> = ({ errorText = '-', labelProps,
       <div {...containerProps} className={`${styles['input-container']} ${containerProps?.className ? containerProps.className : ''}`}>
          {<label className={`${error ? styles['label-error'] : ''}`}>{labelText}</label>}
          <p className={`${styles['error-msj']} ${!error ? styles['invisible'] : ''}`}>{errorText}</p>
-         <input {...inputProps} className={inputClasses} type="text" />
+         <input type="text" {...inputProps} className={inputClasses} />
       </div>
    );
 };
