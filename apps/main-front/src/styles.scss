@@ -7,6 +7,8 @@
   --main-color: #963de9;
   --second-color: rgb(255, 167, 43);
   --dark-gray-color: rgb(112, 112, 112);
+
+  --land-page-trans-color: #9714c26c;
 }
 
 body {
@@ -46,6 +48,8 @@ a, a:hover, a:focus, a:active {
 .divisor {
   margin: 40px 0;
   border-width: 2px;
+  border-style: none;
+  border-top-style: solid;
 }
 
 .divisor--footer {

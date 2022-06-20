@@ -1,11 +1,12 @@
 import React, { FC, useEffect, useState } from 'react';
-import logoImg from '../../../assets/imgs/logo.png';
 import './styles.scss';
 import routes, { navLoggedRoutes, navUnloggedRoutes, routesHideNav } from 'apps/main-front/src/util/routes';
 import { Link, useLocation } from 'react-router-dom';
 import { logoutUser, shouldBeHidden } from 'apps/main-front/src/util/util';
 import { FaUserCircle } from 'react-icons/fa';
 import { useIsAuth } from '../../hooks/authHook';
+import { pageName } from '@finder/util';
+import { RiHeartsFill } from 'react-icons/ri';
 
 const NavBar: FC = () => {
    let location = useLocation();
@@ -53,8 +54,8 @@ const NavBar: FC = () => {
             <nav className={`nav wrapper ` + (solidNav ? 'nav--solid' : '')}>
                <Link to={routes.home.url}>
                   <div className="nav__logo-cont">
-                     <img className="nav__logo-img" src={logoImg} alt="" />
-                     <p className="nav__logo-title">Finder</p>
+                     <RiHeartsFill className="nav__logo-img" />
+                     <p className="nav__logo-title">{pageName}</p>
                   </div>
                </Link>
 
@@ -83,7 +84,7 @@ const NavBar: FC = () => {
                            })}
                            <div className="nav__dropdown-cont">
                               <li className="nav__item" onClick={openProfileDropDown}>
-                                 <FaUserCircle size={'40px'} color="#fff" />
+                                 <FaUserCircle className="nav__dropdown-img" />
                               </li>
                               <div className={`nav__dropdown ${isDropdownOpen ? '' : 'hide'}`}>
                                  <div onClick={logout} className="nav__dropdown-item">
