@@ -1,0 +1,33 @@
+.container{
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.hover-content {
+  visibility: hidden;
+  background-color: rgba(80, 80, 80, 0.544);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:visibility 0.3s linear,opacity 0.3s linear;
+  opacity: 0;
+  border-radius: 10px;
+
+}
+
+.container:hover .hover-content {
+  visibility: visible;
+  opacity:1;
+}
+
+.icon {
+  font-size: 70px;
+  color: white;
+  pointer-events: none;
+}

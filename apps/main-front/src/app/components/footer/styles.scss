@@ -1,9 +1,9 @@
 .footer {
-  background-color: rgb(53, 53, 53);
-  padding-top: 6.7%;
-  padding-bottom: 6.7%;
+  background-color: rgb(223, 223, 223);
+  padding-top: 7%;
+  padding-bottom: 7%;
   text-align: center;
-  color: white;
+  color: rgb(70, 70, 70);
 }
 
 .footer__logo-area{
@@ -14,8 +14,8 @@
 
 .footer__logo{
   font-size: 45px;
-  color: white;
   margin-right: 10px;
+  color: var(--main-color);
 }
 
 .footer__logo-area-text{
@@ -27,4 +27,9 @@
 .footer__more-info{
   font-size: 1rem;
   margin-bottom: 15px;
+}
+
+.divisor--footer {
+  border-width: 1px;
+  color: rgb(70, 70, 70);
 }

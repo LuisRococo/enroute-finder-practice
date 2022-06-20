@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { UserExperiencesSection } from '../../components/home/experiences/section/UserExperienceSection';
 import InfoSection from '../../components/home/info-sec/InfoSection';
 import LandPage from '../../components/home/land-page/LandPage';
 import HomeOtherInfo from '../../components/home/other-info/HomeOtherInfo';
@@ -11,7 +12,7 @@ const Home: FC = () => {
          <LandPage />
          <PhraseSection />
          <HomeOtherInfo />
-         <InfoSection />
+         <UserExperiencesSection />
       </>
    );
 };

@@ -1,0 +1,29 @@
+
+.section {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-color: rgb(236, 236, 236);
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.testimonies-area {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 30px;
+
+  .testimonies-testimony{
+    display: flex;
+    justify-content: center;
+  }
+  .testimonies-people {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    gap: 20px;
+  }
+}
+
