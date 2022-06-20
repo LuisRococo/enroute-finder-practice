@@ -7,7 +7,7 @@ import './styles.scss';
 
 const profileHeaderMockup: ProfileHeaderInterface = {
    age: 21,
-   city: 'Navojoa',
+   city: 'CDMX',
    country: 'Mexico',
    gender: GenderEnum.Female,
    image_profile: 'https://www.okchicas.com/wp-content/uploads/2020/08/outfits-y-conjuntos-con-todo-el-estilo-de-una-e-girl-17.png',

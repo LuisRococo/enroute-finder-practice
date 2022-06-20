@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 import './styles.scss';
-import logoImg from '../../../assets/imgs/logo.png';
 import { useLocation } from 'react-router-dom';
 import { routesHideFooter } from 'apps/main-front/src/util/routes';
 import { shouldBeHidden } from 'apps/main-front/src/util/util';
+import { pageName } from '@finder/util';
+import { RiHeartsFill } from 'react-icons/ri';
 
 const Footer: FC = () => {
    let location = useLocation();
@@ -15,8 +16,8 @@ const Footer: FC = () => {
    return (
       <footer className="footer wrapper">
          <div className="footer__logo-area">
-            <img className="footer__logo" src={logoImg} alt="" />
-            <p className="footer__logo-area-text">Finder</p>
+            <RiHeartsFill className="footer__logo" />
+            <p className="footer__logo-area-text">{pageName}</p>
          </div>
 
          <hr className="divisor divisor--footer" />

@@ -7,7 +7,7 @@ import { LoginFormValidation } from './FormConfig';
 import { Button, FilledInput } from '@finder/components';
 import { loginService } from '../../services/authServices';
 import { saveAuthToken } from 'apps/auth-front/src/util/util';
-import './styles.scss';
+import styles from './styles.module.scss';
 import { LoginLogo } from '../../components/LoginLogo';
 import { AiFillHeart } from 'react-icons/ai';
 
@@ -34,9 +34,9 @@ function LogIn() {
 
    return (
       <>
-         <div className="auth-page">
-            <div className="auth-div auth-form-area">
-               <div className="auth-form-cont">
+         <div className={styles['auth-page']}>
+            <div className={`${styles['auth-div']} ${styles['auth-form-area']}`}>
+               <div className={styles['auth-form-cont']}>
                   <LoginLogo />
 
                   <form onSubmit={formik.handleSubmit}>
@@ -48,7 +48,7 @@ function LogIn() {
                         error={formik.touched.email && formik.errors.email !== undefined}
                         errorText={formik.errors.email}
                         labelText="Email"
-                        className="auth-card__input"
+                        className={styles['auth-card__input']}
                      />
 
                      <FilledInput
@@ -59,21 +59,21 @@ function LogIn() {
                         error={formik.touched.password && formik.errors.password !== undefined}
                         errorText={formik.errors.password}
                         labelText="Password"
-                        className="auth-card__input"
+                        className={styles['auth-card__input']}
                         type={'password'}
                      />
 
-                     <Button className="login-btn" text="Submit" type="submit" />
+                     <Button className={styles['login-btn']} text="Submit" type="submit" />
 
-                     <Link className="autn-card__link" to={routes.signup.url}>
+                     <Link className={styles['autn-card__link']} to={routes.signup.url}>
                         Sign Up
                      </Link>
                   </form>
                </div>
             </div>
-            <div className="auth-div auth-div--promo-area">
-               <div className="promo-message-cont">
-                  <AiFillHeart className="promo-message-icon" />
+            <div className={`${styles['auth-div']} ${styles['auth-div--promo-area']}`}>
+               <div className={styles['promo-message-cont']}>
+                  <AiFillHeart className={styles['promo-message-icon']} />
                   <h2>Discover new Frienships without frontiers</h2>
                </div>
             </div>
