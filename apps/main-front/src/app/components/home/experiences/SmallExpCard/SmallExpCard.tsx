@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import styles from './sm-img.module.scss';
+import styles from './styles.module.scss';
 import { AiFillEye } from 'react-icons/ai';
-import { UserExperienceInterface } from '../UserExperiencesSec/data';
+import { UserExperienceInterface } from '../Section/data';
 
 export type OnClickFunctionType = (values: UserExperienceInterface) => void;
 
@@ -9,7 +9,7 @@ interface SmallImageHoverInterface extends UserExperienceInterface {
    onClick: OnClickFunctionType;
 }
 
-export const SmallImageHover: FC<SmallImageHoverInterface> = ({ age, desc, img, name, onClick }) => {
+export const SmallExpCard: FC<SmallImageHoverInterface> = ({ age, desc, img, name, onClick }) => {
    function onComponentClick() {
       const userExperience: UserExperienceInterface = {
          age: age,

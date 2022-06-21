@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { UserExperienceInterface } from '../UserExperiencesSec/data';
-import styles from './big-card.module.scss';
+import { UserExperienceInterface } from '../Section/data';
+import styles from './styles.module.scss';
 
-export const BigExperienceCard: FC<UserExperienceInterface> = ({ img, age, desc, name }) => {
+export const ExperienceCard: FC<UserExperienceInterface> = ({ img, age, desc, name }) => {
    return (
       <div className={styles['big-card']}>
          <img className={styles['image']} src={img} alt="profile-img" />

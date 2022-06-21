@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
-import { BigExperienceCard } from '../ExperienceCard/BigExperienceCard';
-import { OnClickFunctionType, SmallImageHover } from '../ImageHover/SmallImageHover';
+import { ExperienceCard } from '../ExperienceCard/ExperienceCard';
+import { OnClickFunctionType, SmallExpCard } from '../SmallExpCard/SmallExpCard';
 import { userExperiences } from './data';
-import stylesSection from './section.module.scss';
+import styles from './styles.module.scss';
 
-export const UserExperiencesSection = () => {
+export const UserExperienceSection = () => {
    const [selectedExperience, setSelectedExperience] = useState(userExperiences[0]);
    const onSmallImageClick: OnClickFunctionType = (newUserExperience) => {
       setSelectedExperience(newUserExperience);
    };
 
    return (
-      <div className={`${stylesSection['section']} wrapper`}>
-         <h3 className={stylesSection['title']}>Testimonies</h3>
+      <div className={`${styles['section']} wrapper`}>
+         <h3 className={styles['title']}>Testimonies</h3>
          <hr className="divisor" />
 
-         <div className={stylesSection['testimonies-area']}>
-            <div className={stylesSection['testimonies-testimony']}>
-               <BigExperienceCard {...selectedExperience} />
+         <div className={styles['testimonies-area']}>
+            <div className={styles['testimonies-testimony']}>
+               <ExperienceCard {...selectedExperience} />
             </div>
             <div>
-               <div className={stylesSection['testimonies-people']}>
+               <div className={styles['testimonies-people']}>
                   {userExperiences.map((experience, key) => {
                      return (
-                        <SmallImageHover
+                        <SmallExpCard
                            onClick={onSmallImageClick}
                            age={experience.age}
                            desc={experience.desc}
