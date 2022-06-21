@@ -28,7 +28,7 @@ function LogIn() {
          window.dispatchEvent(new Event(FRONT_EVENT_NAMES.SET_AUTH_TOKEN));
       } catch (error: any) {
          formik.values.password = '';
-         alert('check your email and password');
+         alert('Check your email and password');
       }
    }
 
