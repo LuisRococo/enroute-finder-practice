@@ -1,6 +1,7 @@
 .big-card {
   width: 500px;
   min-width: 100px;
+  min-height: 630px;
   background-color: white;
   padding: 40px 30px;
   display: flex;
@@ -11,11 +12,13 @@
 }
 
 .image{
-  width: 80%;
+  width: 280px;
+  height: 280px;
   min-width: 100px;
   border-radius: 100%;
   clip-path: circle();
   margin-bottom: 30px;
+  object-fit:cover;
 }
 
 .name {
