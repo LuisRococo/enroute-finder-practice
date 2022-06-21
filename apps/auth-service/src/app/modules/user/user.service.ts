@@ -1,6 +1,7 @@
 import { CreateUserDTO, GetUserDTO, GetUsersDTO, LoginDTO } from '@finder/definitions';
 import { Get, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { hashPassword } from 'apps/auth-service/src/utils/auth';
 import { Model, Types } from 'mongoose';
 import { UserDocument } from '../../models/user';
 import AboutService from '../about/about.service';
@@ -30,6 +31,9 @@ export default class UserService {
 
    async createUser(user: CreateUserDTO): Promise<UserDocument> {
       const createdAbout = await this.aboutService.createAbout(user.about);
+
+      const hashedPassword: string = hashPassword(user.password);
+      user.password = hashedPassword;
 
       const createdUser = await this.userModel.create({
          _id: new Types.ObjectId(),

@@ -3,6 +3,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import UserService from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { createHmac } from 'crypto';
+import { hashPassword } from 'apps/auth-service/src/utils/auth';
 
 @Injectable()
 export default class AuthService {
@@ -25,9 +26,8 @@ export default class AuthService {
    }
 
    async validateUser(userInfo: LoginDTO) {
-      const sha512Hasher = createHmac('sha256', process.env.PRIVATE_KEY);
-      const hashPassword: string = sha512Hasher.update(userInfo.password).digest('base64');
-      userInfo.password = hashPassword;
+      const hashedPassword: string = hashPassword(userInfo.password);
+      userInfo.password = hashedPassword;
 
       const user = await this.userService.findUserByLogin(userInfo);
       return user;
