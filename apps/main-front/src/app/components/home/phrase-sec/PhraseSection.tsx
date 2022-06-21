@@ -1,6 +1,9 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import { RiHeartsFill } from 'react-icons/ri';
+import girlImg1 from '../../../../assets/imgs/phraseSection/girl-1.jpeg';
+import girlImg2 from '../../../../assets/imgs/phraseSection/girl-2.jpeg';
+import girlImg3 from '../../../../assets/imgs/phraseSection/girl-3.jpeg';
 
 const PhraseSection = () => {
    return (
@@ -14,21 +17,9 @@ const PhraseSection = () => {
          </div>
          <div className={`${styles['imgs-sec']} ${styles['container-section']}`}>
             <div className={styles['img-sec-img-cont']}>
-               <img
-                  className={styles['img-1']}
-                  src="https://thumbs.dreamstime.com/b/happy-young-african-woman-standing-her-finger-pointing-isolated-over-pink-banner-background-copy-space-happy-young-160551697.jpg"
-                  alt=""
-               />
-               <img
-                  className={styles['img-3']}
-                  src="https://media.istockphoto.com/photos/close-up-photo-of-pretty-attractive-optimistic-lovely-she-her-lady-picture-id1146673398?k=20&m=1146673398&s=612x612&w=0&h=relXbE3qYdtayXr9juNJzQCY_QppoOkeEzJRD61P9v4="
-                  alt=""
-               />
-               <img
-                  className={styles['img-2']}
-                  src="https://thumbs.dreamstime.com/b/success-victory-achievement-concept-happy-woman-winner-clenching-her-fists-yelling-yes-excitement-achieving-goals-148714049.jpg"
-                  alt=""
-               />
+               <img className={styles['img-1']} src={girlImg1} alt="" />
+               <img className={styles['img-3']} src={girlImg2} alt="" />
+               <img className={styles['img-2']} src={girlImg3} alt="" />
             </div>
          </div>
       </div>
