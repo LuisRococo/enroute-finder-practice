@@ -17,11 +17,7 @@ const HomeOtherInfo: FC = () => {
 
          <div className="hm-other__items-cont">
             {items.map((item, key) => {
-               return (
-                  <>
-                     <SmallCard {...item} key={`small-card-${key}`} />
-                  </>
-               );
+               return <SmallCard {...item} key={`small-card-${key}`} />;
             })}
          </div>
       </div>
