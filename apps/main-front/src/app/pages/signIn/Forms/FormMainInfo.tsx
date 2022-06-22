@@ -4,7 +4,7 @@ import { FormCard } from '../FormCard';
 import styles from '../styles.module.scss';
 import { FormCardInterface } from '../types';
 
-export const FormMainInfo: FC<FormCardInterface> = () => {
+export const FormMainInfo: FC = () => {
    return (
       <div>
          <FormCard>
