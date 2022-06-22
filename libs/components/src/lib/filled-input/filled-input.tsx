@@ -3,7 +3,7 @@ import styles from './filled-input.module.scss';
 
 /* eslint-disable-next-line */
 export interface FilledInputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-   labelText: string;
+   labelText?: string;
    errorText?: string;
    error?: boolean;
    labelProps?: React.DetailedHTMLProps<React.LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>;

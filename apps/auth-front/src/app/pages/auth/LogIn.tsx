@@ -12,7 +12,7 @@ import { LoginLogo } from '../../components/LoginLogo';
 import { AiFillHeart } from 'react-icons/ai';
 
 function LogIn() {
-   const formik = useFormik({
+   const formik = useFormik<LoginDTO>({
       initialValues: {
          email: '',
          password: '',

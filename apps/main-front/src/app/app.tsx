@@ -11,6 +11,7 @@ import Profile from './pages/profile/Profile';
 import React from 'react';
 import { GenericProtectedRoute } from '@finder/components';
 import { useIsAuth } from './hooks/authHook';
+import { SignIn } from './pages/signIn/SignIn';
 
 const AuthFront = React.lazy(() => import('auth-front/Module'));
 const redirectTo = routes.login.url;
@@ -53,7 +54,7 @@ export function App() {
                path={routes.signup.url}
                element={
                   <GenericProtectedRoute isAuth={!isAuth}>
-                     <AuthFront />
+                     <SignIn />
                   </GenericProtectedRoute>
                }
             />

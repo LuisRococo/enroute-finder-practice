@@ -1,0 +1,72 @@
+.page {
+  --form-width: 400px;
+
+  background-color: rgb(237, 237, 237);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .card {
+    background-color: white;
+    display: flex;
+    width: 100%;
+    min-height: 700px;
+
+    .card-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-width: var(--form-width);
+      padding: 40px 20px;
+
+      .logo-cont {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+
+        .logo{
+          color: var(--main-color);
+          font-size: 70px;
+          margin-right: 12px;
+        }
+
+        h3{
+          font-size: 2.2rem;
+          color: rgb(71, 72, 74);
+          font-weight: bold;
+        }
+      }
+
+      .card-forms-cont {
+        width: var(--form-width);
+        overflow-x: hidden;
+        display: flex;
+
+        .form-card {
+          min-height: 400px;
+          min-width: var(--form-width);
+          padding: 0 20px;
+
+          .form-input {
+            width: 100%;
+            margin-bottom: 2px;
+          }
+        }
+      }
+    }
+
+    .card-decor{
+      flex: 1;
+      background: linear-gradient( #461e6c87, #461e6c87) , url('../../../assets/imgs/sign-in-bg.jpeg');
+      background-position: center;
+      background-size: cover;
+    }
+
+
+  }
+}
+

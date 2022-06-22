@@ -23,7 +23,7 @@ const routes = {
 
 export const navUnloggedRoutes = [routes.home, routes.login];
 
-export const navLoggedRoutes = [routes.find, routes.profile];
+export const navLoggedRoutes = [routes.home, routes.find, routes.profile];
 
 export const routesHideNav = [routes.login, routes.signup];
 
