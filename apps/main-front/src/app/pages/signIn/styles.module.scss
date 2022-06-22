@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 
   .card {
     background-color: white;
@@ -47,9 +47,11 @@
         display: flex;
 
         .form-card {
-          min-height: 400px;
+          max-height: 350px;
           min-width: var(--form-width);
           padding: 0 20px;
+          overflow-y: auto;
+          margin-bottom: 30px;
 
           .form-input {
             width: 100%;

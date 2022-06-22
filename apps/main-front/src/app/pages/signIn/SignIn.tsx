@@ -5,6 +5,7 @@ import { RiHeartsFill } from 'react-icons/ri';
 import { pageName } from '@finder/util';
 import { Link } from 'react-router-dom';
 import routes from 'apps/main-front/src/util/routes';
+import { FormMainInfo } from './Forms/FormMainInfo';
 
 export const SignIn = () => {
    const [formIndex, setFormIndex] = useState(0);
@@ -35,16 +36,8 @@ export const SignIn = () => {
                   </div>
                </Link>
                <div ref={formContent} className={styles['card-forms-cont']}>
+                  <FormMainInfo />
                   <div className={styles['form-card']}>
-                     <FilledInput className={styles['form-input']} />
-                     <FilledInput className={styles['form-input']} />
-                     <FilledInput className={styles['form-input']} />
-
-                     <Button text="Previous one" onClick={moveToPreviousForm} />
-                     <Button text="Next" onClick={moveToNextForm} />
-                  </div>
-                  <div className={styles['form-card']}>
-                     {' '}
                      <FilledInput className={styles['form-input']} />
                      <FilledInput className={styles['form-input']} />
                      <FilledInput className={styles['form-input']} />
@@ -52,7 +45,6 @@ export const SignIn = () => {
                      <Button text="Next" onClick={moveToNextForm} />
                   </div>
                   <div className={styles['form-card']}>
-                     {' '}
                      <FilledInput className={styles['form-input']} />
                      <FilledInput className={styles['form-input']} />
                      <FilledInput className={styles['form-input']} />
