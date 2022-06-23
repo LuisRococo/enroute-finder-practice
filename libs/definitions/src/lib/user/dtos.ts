@@ -16,7 +16,6 @@ export class CreateUserDTO {
    preference: string;
    about: About;
    lookingfor: LookingforEnum;
-   verified = false;
 }
 
 export class LoginDTO {

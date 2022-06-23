@@ -36,21 +36,9 @@ export const SignIn = () => {
                   </div>
                </Link>
                <div ref={formContent} className={styles['card-forms-cont']}>
-                  <FormMainInfo />
-                  <div className={styles['form-card']}>
-                     <FilledInput className={styles['form-input']} />
-                     <FilledInput className={styles['form-input']} />
-                     <FilledInput className={styles['form-input']} />
-                     <Button text="Previous one" onClick={moveToPreviousForm} />
-                     <Button text="Next" onClick={moveToNextForm} />
-                  </div>
-                  <div className={styles['form-card']}>
-                     <FilledInput className={styles['form-input']} />
-                     <FilledInput className={styles['form-input']} />
-                     <FilledInput className={styles['form-input']} />
-                     <Button text="Previous one" onClick={moveToPreviousForm} />
-                     <Button text="Next" onClick={moveToNextForm} />
-                  </div>
+                  <FormMainInfo moveNext={moveToNextForm} movePrevious={moveToPreviousForm} />
+                  <FormMainInfo moveNext={moveToNextForm} movePrevious={moveToPreviousForm} />
+                  <FormMainInfo moveNext={moveToNextForm} movePrevious={moveToPreviousForm} />
                </div>
             </div>
             <div className={styles['card-decor']}></div>

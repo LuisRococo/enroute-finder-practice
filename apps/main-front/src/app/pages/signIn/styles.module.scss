@@ -45,19 +45,6 @@
         width: var(--form-width);
         overflow-x: hidden;
         display: flex;
-
-        .form-card {
-          max-height: 350px;
-          min-width: var(--form-width);
-          padding: 0 20px;
-          overflow-y: auto;
-          margin-bottom: 30px;
-
-          .form-input {
-            width: 100%;
-            margin-bottom: 2px;
-          }
-        }
       }
     }
 
@@ -70,5 +57,45 @@
 
 
   }
+
+  .form-card-wrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: var(--form-width);
+
+    .form-button-area {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+
+      .button-return.button-return {
+        background-color: rgb(210, 204, 204);
+        color: rgb(90, 93, 96);
+      }
+
+      .button-next {
+        justify-self: flex-end;
+        min-width: 150px;
+      }
+    }
+
+    .form-card {
+      max-height: 350px;
+      min-width: var(--form-width);
+      padding: 0 20px;
+      overflow-y: auto;
+      margin-bottom: 30px;
+
+      .form-input {
+        width: 100%;
+        margin-bottom: 2px;
+      }
+    }
+  }
+  .btn {
+    background-color: var(--main-color);
+  }
 }
+
 
