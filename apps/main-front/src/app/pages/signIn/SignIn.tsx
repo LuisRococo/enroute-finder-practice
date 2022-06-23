@@ -6,6 +6,9 @@ import { pageName } from '@finder/util';
 import { Link } from 'react-router-dom';
 import routes from 'apps/main-front/src/util/routes';
 import { FormMainInfo } from './Forms/FormMainInfo';
+import { FormikValues, useFormik } from 'formik';
+import { signInInitialValues, signInYupSchema } from './utils/formikConfig';
+import FormOtherInfo from './Forms/FormOtherInfo';
 
 export const SignIn = () => {
    const [formIndex, setFormIndex] = useState(0);
@@ -25,6 +28,12 @@ export const SignIn = () => {
       formContent.current?.scroll({ left: scrollPosition, behavior: 'smooth' });
    }, [formIndex]);
 
+   const formikConfig = useFormik({
+      initialValues: signInInitialValues,
+      onSubmit: () => {},
+      validationSchema: signInYupSchema,
+   });
+
    return (
       <div className={`wrapper ${styles['page']}`}>
          <div className={styles['card']}>
@@ -36,9 +45,21 @@ export const SignIn = () => {
                   </div>
                </Link>
                <div ref={formContent} className={styles['card-forms-cont']}>
-                  <FormMainInfo moveNext={moveToNextForm} movePrevious={moveToPreviousForm} />
-                  <FormMainInfo moveNext={moveToNextForm} movePrevious={moveToPreviousForm} />
-                  <FormMainInfo moveNext={moveToNextForm} movePrevious={moveToPreviousForm} />
+                  <FormMainInfo
+                     moveNext={moveToNextForm}
+                     movePrevious={moveToPreviousForm}
+                     formik={formikConfig}
+                  />
+                  <FormOtherInfo
+                     moveNext={moveToNextForm}
+                     movePrevious={moveToPreviousForm}
+                     formik={formikConfig}
+                  />
+                  <FormMainInfo
+                     moveNext={moveToNextForm}
+                     movePrevious={moveToPreviousForm}
+                     formik={formikConfig}
+                  />
                </div>
             </div>
             <div className={styles['card-decor']}></div>

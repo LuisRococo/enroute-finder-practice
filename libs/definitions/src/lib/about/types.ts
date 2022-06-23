@@ -1,4 +1,4 @@
-import { PersonalQuestion } from '../personalQuestions';
+import { CreatePersonalQuestionDTO, PersonalQuestion } from '../personalQuestions';
 
 export enum HoroscopeEnum {
    ARIES = 'Aries',

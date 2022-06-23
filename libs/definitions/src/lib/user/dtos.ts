@@ -1,6 +1,6 @@
 import { GenderEnum, LookingforEnum } from './types';
 import { Types } from 'mongoose';
-import { About } from '../about';
+import { About, CreateAboutDTO } from '../about';
 
 export class CreateUserDTO {
    name: string;
@@ -14,7 +14,7 @@ export class CreateUserDTO {
    age: number;
    gender: GenderEnum;
    preference: string;
-   about: About;
+   about: CreateAboutDTO;
    lookingfor: LookingforEnum;
 }
 
