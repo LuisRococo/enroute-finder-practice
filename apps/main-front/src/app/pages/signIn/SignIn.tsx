@@ -3,17 +3,21 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import { RiHeartsFill } from 'react-icons/ri';
 import { pageName } from '@finder/util';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import routes from 'apps/main-front/src/util/routes';
 import { FormMainInfo } from './Forms/FormMainInfo';
 import { FormikValues, useFormik } from 'formik';
 import { signInInitialValues, signInYupSchema } from './utils/formikConfig';
 import FormOtherInfo from './Forms/FormOtherInfo';
 import FormAboutInfo from './Forms/FormAboutInfo';
+import { CreateUserDAO, CreateUserDTO } from '@finder/definitions';
+import { SignInInterface } from './utils/types';
+import { apiSignIn } from '../../services/userAPI';
 
 export const SignIn = () => {
    const [formIndex, setFormIndex] = useState(0);
    const formContent = useRef<HTMLDivElement>(null);
+   const navigate = useNavigate();
    const formSize = 400;
 
    function moveToPreviousForm() {
@@ -24,6 +28,16 @@ export const SignIn = () => {
       setFormIndex(Math.min(2, formIndex + 1));
    }
 
+   async function submitSignIn(values: SignInInterface) {
+      try {
+         const signInDAO = values as CreateUserDTO;
+         const userDAO: CreateUserDAO = await apiSignIn(signInDAO);
+         navigate(routes.login.url);
+      } catch (error) {
+         alert('There was an error, try it later');
+      }
+   }
+
    useEffect(() => {
       const scrollPosition = formSize * formIndex;
       formContent.current?.scroll({ left: scrollPosition, behavior: 'smooth' });
@@ -31,17 +45,9 @@ export const SignIn = () => {
 
    const formik = useFormik({
       initialValues: signInInitialValues,
-      onSubmit: () => {
-         alert('lol');
-      },
+      onSubmit: submitSignIn,
       validationSchema: signInYupSchema,
    });
-
-   useEffect(() => {
-      console.info(formik.errors.about);
-      console.info(formik.touched.about);
-      console.info('-----------------');
-   }, [formik.errors]);
 
    return (
       <div className={`wrapper ${styles['page']}`}>

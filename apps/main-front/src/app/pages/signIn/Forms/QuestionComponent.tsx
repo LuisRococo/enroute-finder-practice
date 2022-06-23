@@ -25,7 +25,7 @@ const QuestionComponent: FC<QuestionComponentInterface> = ({ formik, questionNum
             errorText={
                formik.errors?.about?.personal_questions
                   ? formik.errors?.about?.personal_questions[questionNumber - 1]?.question
-                  : ''
+                  : '-'
             }
          />
          <TextArea
@@ -41,7 +41,7 @@ const QuestionComponent: FC<QuestionComponentInterface> = ({ formik, questionNum
             errorText={
                formik.errors?.about?.personal_questions
                   ? formik.errors?.about?.personal_questions[questionNumber - 1]?.answer
-                  : ''
+                  : '-'
             }
          />
       </div>

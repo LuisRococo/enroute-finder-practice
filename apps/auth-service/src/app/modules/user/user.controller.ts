@@ -1,4 +1,4 @@
-import { CreateUserDTO, GetUserDTO, GetUsersDTO } from '@finder/definitions';
+import { CreateUserDAO, CreateUserDTO, GetUserDTO, GetUsersDTO } from '@finder/definitions';
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { UserDocument } from '../../models/user';
 import UserService from './user.service';
@@ -18,7 +18,19 @@ export class UserController {
    }
 
    @Post()
-   async createUser(@Body() createUserDTO: CreateUserDTO): Promise<UserDocument> {
-      return this.userService.createUser(createUserDTO);
+   async createUser(@Body() createUserDTO: CreateUserDTO): Promise<CreateUserDAO> {
+      const userDocument = await this.userService.createUser(createUserDTO);
+      const createUserDAO: CreateUserDAO = {
+         age: userDocument.age,
+         email: userDocument.email,
+         gender: userDocument.gender,
+         image_profile: userDocument.image_profile,
+         lookingfor: userDocument.lookingfor,
+         name: userDocument.name,
+         phone: userDocument.phone,
+         preference: userDocument.preference,
+         last_name: userDocument.last_name,
+      };
+      return createUserDAO;
    }
 }

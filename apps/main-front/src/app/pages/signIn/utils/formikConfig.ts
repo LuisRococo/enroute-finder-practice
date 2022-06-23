@@ -40,7 +40,7 @@ export const signInYupSchema: Yup.SchemaOf<SignInInterface> = Yup.object().shape
       .required('Field required'),
    confirmPassword: Yup.string()
       .required('Field Required')
-      .oneOf([Yup.ref('password')]),
+      .oneOf([Yup.ref('password')], 'Password do not match'),
    age: Yup.number().required('Field is required'),
    city: Yup.string().required('This field is required'),
    country: Yup.string().required('This field is required'),

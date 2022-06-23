@@ -31,6 +31,8 @@ const FormOtherInfo: FC<FormCardInterface> = ({ formik, moveNext, movePrevious }
                errorText={formik.errors.phone}
             />
             <FilledInput
+               type={'number'}
+               step={1}
                {...formik.getFieldProps('age')}
                labelText="Age"
                className={styles['form-input']}
@@ -74,7 +76,7 @@ const FormOtherInfo: FC<FormCardInterface> = ({ formik, moveNext, movePrevious }
                {...formik.getFieldProps('image_profile')}
                labelText="Profile Image"
                className={styles['form-input']}
-               error={formik.touched.lookingfor && formik.errors.image_profile}
+               error={formik.touched.image_profile && formik.errors.image_profile}
                errorText={formik.errors.image_profile}
             />
          </div>
