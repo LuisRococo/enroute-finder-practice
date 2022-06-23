@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { FormCardInterface } from '../utils/types';
-import styles from '../styles.module.scss';
+import { FormCardInterface } from '../../../pages/signIn/utils/types';
+import styles from '../../../pages/signIn/styles.module.scss';
 import { Button, FilledInput } from '@finder/components';
 import InputSelect from 'libs/components/src/lib/inputSelect/InputSelect';
 import { GenderEnum, LookingforEnum } from '@finder/definitions';

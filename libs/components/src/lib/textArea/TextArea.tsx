@@ -28,7 +28,9 @@ const TextArea: FC<TextAreInterface> = ({
          </p>
          <textarea
             {...textAreaProps}
-            className={`${styles['text-area']} ${className ? className : ''} `}
+            className={`${styles['text-area']} ${className ? className : ''} ${
+               error ? styles['text-area-error'] : ''
+            }`}
             rows={10}
             cols={10}
          />

@@ -7,7 +7,11 @@ export interface AuthProtectedRouteProps {
    redirectTo?: string;
 }
 
-export const GenericProtectedRoute: FC<AuthProtectedRouteProps> = ({ children, isAuth, redirectTo = '/' }) => {
+export const GenericProtectedRoute: FC<AuthProtectedRouteProps> = ({
+   children,
+   isAuth,
+   redirectTo = '/',
+}) => {
    if (!isAuth) {
       return <Navigate to={redirectTo} replace />;
    }

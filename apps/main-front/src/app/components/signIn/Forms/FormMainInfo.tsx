@@ -1,8 +1,8 @@
 import { Button, FilledInput } from '@finder/components';
 import React, { FC } from 'react';
-import { FormCard } from '../FormCard';
-import styles from '../styles.module.scss';
-import { FormCardInterface } from '../utils/types';
+import { FormCard } from '../../../pages/signIn/FormCard';
+import styles from '../../../pages/signIn/styles.module.scss';
+import { FormCardInterface } from '../../../pages/signIn/utils/types';
 
 export const FormMainInfo: FC<FormCardInterface> = ({ moveNext, movePrevious, formik }) => {
    return (
@@ -30,6 +30,7 @@ export const FormMainInfo: FC<FormCardInterface> = ({ moveNext, movePrevious, fo
                errorText={formik.errors.email}
             />
             <FilledInput
+               type={'password'}
                {...formik.getFieldProps('password')}
                labelText="Password"
                className={styles['form-input']}
@@ -37,6 +38,7 @@ export const FormMainInfo: FC<FormCardInterface> = ({ moveNext, movePrevious, fo
                errorText={formik.errors.password}
             />
             <FilledInput
+               type={'password'}
                {...formik.getFieldProps('confirmPassword')}
                labelText="Confirm Password"
                className={styles['form-input']}

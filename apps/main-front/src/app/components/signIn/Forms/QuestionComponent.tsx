@@ -1,7 +1,7 @@
 import { FilledInput } from '@finder/components';
 import TextArea from 'libs/components/src/lib/textArea/TextArea';
 import React, { FC } from 'react';
-import styles from '../styles.module.scss';
+import styles from '../../../pages/signIn/styles.module.scss';
 
 interface QuestionComponentInterface {
    formik: any;
