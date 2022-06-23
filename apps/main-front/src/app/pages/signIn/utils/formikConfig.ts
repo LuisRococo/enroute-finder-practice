@@ -22,7 +22,7 @@ const AboutYupSchema: Yup.SchemaOf<CreateAboutDTO> = Yup.object().shape({
       .required('This field is required'),
    personal_questions: Yup.array()
       .of(QuestionsYupSchema as Yup.AnySchema)
-      .min(3, 'You need at least two questions'),
+      .min(2, 'You need at least two questions'),
 });
 
 export const signInYupSchema: Yup.SchemaOf<SignInInterface> = Yup.object().shape({

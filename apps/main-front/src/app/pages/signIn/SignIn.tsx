@@ -9,6 +9,7 @@ import { FormMainInfo } from './Forms/FormMainInfo';
 import { FormikValues, useFormik } from 'formik';
 import { signInInitialValues, signInYupSchema } from './utils/formikConfig';
 import FormOtherInfo from './Forms/FormOtherInfo';
+import FormAboutInfo from './Forms/FormAboutInfo';
 
 export const SignIn = () => {
    const [formIndex, setFormIndex] = useState(0);
@@ -28,11 +29,19 @@ export const SignIn = () => {
       formContent.current?.scroll({ left: scrollPosition, behavior: 'smooth' });
    }, [formIndex]);
 
-   const formikConfig = useFormik({
+   const formik = useFormik({
       initialValues: signInInitialValues,
-      onSubmit: () => {},
+      onSubmit: () => {
+         alert('lol');
+      },
       validationSchema: signInYupSchema,
    });
+
+   useEffect(() => {
+      console.info(formik.errors.about);
+      console.info(formik.touched.about);
+      console.info('-----------------');
+   }, [formik.errors]);
 
    return (
       <div className={`wrapper ${styles['page']}`}>
@@ -44,23 +53,25 @@ export const SignIn = () => {
                      <h3>{pageName}</h3>
                   </div>
                </Link>
-               <div ref={formContent} className={styles['card-forms-cont']}>
-                  <FormMainInfo
-                     moveNext={moveToNextForm}
-                     movePrevious={moveToPreviousForm}
-                     formik={formikConfig}
-                  />
-                  <FormOtherInfo
-                     moveNext={moveToNextForm}
-                     movePrevious={moveToPreviousForm}
-                     formik={formikConfig}
-                  />
-                  <FormMainInfo
-                     moveNext={moveToNextForm}
-                     movePrevious={moveToPreviousForm}
-                     formik={formikConfig}
-                  />
-               </div>
+               <form onSubmit={formik.handleSubmit}>
+                  <div ref={formContent} className={styles['card-forms-cont']}>
+                     <FormMainInfo
+                        moveNext={moveToNextForm}
+                        movePrevious={moveToPreviousForm}
+                        formik={formik}
+                     />
+                     <FormOtherInfo
+                        moveNext={moveToNextForm}
+                        movePrevious={moveToPreviousForm}
+                        formik={formik}
+                     />
+                     <FormAboutInfo
+                        moveNext={moveToNextForm}
+                        movePrevious={moveToPreviousForm}
+                        formik={formik}
+                     />
+                  </div>
+               </form>
             </div>
             <div className={styles['card-decor']}></div>
          </div>

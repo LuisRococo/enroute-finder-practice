@@ -1,0 +1,44 @@
+.input-container {
+  min-height: 160px;
+
+  .invisible {
+    visibility: hidden;
+  }
+
+  .error-msj{
+    color: rgb(192, 28, 7);
+    font-style: italic;
+    font-size: .8rem;
+    margin-bottom: 5px;
+  }
+
+  .text-area {
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 12px 10px;
+    border-style: solid;
+    border-width: 2px;
+    height: 100px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .text-area-error {
+    color: rgb(192, 28, 7);
+    border-color: rgb(192, 28, 7);
+  }
+
+  label{
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: rgb(60, 60, 60);
+    display: block;
+    margin-bottom: 0px;
+    transform: translate(0px, 15px);
+    transition: transform 0.5s;
+  }
+
+  .label-error {
+    transform: translate(0px, 0px);
+  }
+}
+

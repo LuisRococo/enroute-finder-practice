@@ -60,9 +60,9 @@
 
   .form-card-wrapper{
     display: flex;
-    justify-content: center;
     flex-direction: column;
     max-width: var(--form-width);
+    height: 100%;
 
     .form-button-area {
       display: flex;
@@ -99,3 +99,11 @@
 }
 
 
+.question-group{
+  margin-top: 30px;
+  font-weight: bold;
+
+  .question-title{
+    font-size: 1.2rem;
+  }
+}

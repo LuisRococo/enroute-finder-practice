@@ -50,11 +50,13 @@ export const FormMainInfo: FC<FormCardInterface> = ({ moveNext, movePrevious, fo
                onClick={movePrevious}
                className={`${styles['button-return']} ${styles['btn']}`}
                text="Return"
+               type="button"
             />
             <Button
                onClick={moveNext}
                className={`${styles['button-next']} ${styles['btn']}`}
                text="Next"
+               type="button"
             />
          </div>
       </div>

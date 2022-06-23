@@ -2,11 +2,27 @@ import React, { FC } from 'react';
 import { FormCardInterface } from '../utils/types';
 import styles from '../styles.module.scss';
 import { Button, FilledInput } from '@finder/components';
+import InputSelect from 'libs/components/src/lib/inputSelect/InputSelect';
+import { GenderEnum, LookingforEnum } from '@finder/definitions';
 
 const FormOtherInfo: FC<FormCardInterface> = ({ formik, moveNext, movePrevious }) => {
    return (
       <div className={styles['form-card-wrapper']}>
          <div className={styles['form-card']}>
+            <FilledInput
+               {...formik.getFieldProps('country')}
+               labelText="Country"
+               className={styles['form-input']}
+               error={formik.touched.country && formik.errors.country}
+               errorText={formik.errors.country}
+            />
+            <FilledInput
+               {...formik.getFieldProps('city')}
+               labelText="City"
+               className={styles['form-input']}
+               error={formik.touched.city && formik.errors.city}
+               errorText={formik.errors.city}
+            />
             <FilledInput
                {...formik.getFieldProps('phone')}
                labelText="Phone"
@@ -21,13 +37,19 @@ const FormOtherInfo: FC<FormCardInterface> = ({ formik, moveNext, movePrevious }
                error={formik.touched.age && formik.errors.age}
                errorText={formik.errors.age}
             />
-            <FilledInput
+            <InputSelect
                {...formik.getFieldProps('gender')}
                labelText="Gender"
                className={styles['form-input']}
-               error={formik.touched.gender && formik.errors.gender}
-               errorText={formik.errors.gender}
-            />
+            >
+               {Object.values(GenderEnum).map((item, key) => {
+                  return (
+                     <option value={item} key={`gender-select-${key}`}>
+                        {item}
+                     </option>
+                  );
+               })}
+            </InputSelect>
             <FilledInput
                {...formik.getFieldProps('preference')}
                labelText="Preference"
@@ -35,16 +57,22 @@ const FormOtherInfo: FC<FormCardInterface> = ({ formik, moveNext, movePrevious }
                error={formik.touched.preference && formik.errors.preference}
                errorText={formik.errors.preference}
             />
-            <FilledInput
+            <InputSelect
                {...formik.getFieldProps('lookingfor')}
                labelText="Looking For"
                className={styles['form-input']}
-               error={formik.touched.lookingfor && formik.errors.lookingfor}
-               errorText={formik.errors.lookingfor}
-            />
+            >
+               {Object.values(LookingforEnum).map((item, key) => {
+                  return (
+                     <option value={item} key={`looking-for-select-${key}`}>
+                        {item}
+                     </option>
+                  );
+               })}
+            </InputSelect>
             <FilledInput
                {...formik.getFieldProps('image_profile')}
-               labelText="Profile image_profile"
+               labelText="Profile Image"
                className={styles['form-input']}
                error={formik.touched.lookingfor && formik.errors.image_profile}
                errorText={formik.errors.image_profile}
@@ -56,11 +84,13 @@ const FormOtherInfo: FC<FormCardInterface> = ({ formik, moveNext, movePrevious }
                onClick={movePrevious}
                className={`${styles['button-return']} ${styles['btn']}`}
                text="Return"
+               type="button"
             />
             <Button
                onClick={moveNext}
                className={`${styles['button-next']} ${styles['btn']}`}
                text="Next"
+               type="button"
             />
          </div>
       </div>
