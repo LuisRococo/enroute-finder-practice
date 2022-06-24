@@ -31,9 +31,12 @@ border-radius: 10px;
 
   img {
     width: 100%;
-    max-width: 460px;
+    max-width: 430px;
     object-fit: cover;
-    border-radius: 7px;
+    border-radius: 50%;
+    border-width: 12px;
+    border-style: solid;
+    border-color: white;
   }
 }
 
@@ -161,19 +164,27 @@ border-radius: 10px;
 
 //GALLERY
 
-.profile-pg__gallery-wrapper {
-  overflow: auto;
-}
+.gallery{
+  padding: 5% 7%;
+  background-color: var(--main-color);
 
-.p-gallery{
-  margin: 7% 0;
-}
+  .profile-section-title.gallery-title{
+    color: white;
+  }
 
-.gallery-img-wrapper {
-  padding: 0 20px;
-}
+  .divisor.gallery-divisor {
+    border-color: white;
+    margin-bottom: 60px;
+  }
 
-.gallery-img {
-  width: 100%;
-  border-radius: 7px;
+  .gallery-title-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .gallery-icon {
+      color: white;
+      font-size: 50px;
+    }
+  }
 }

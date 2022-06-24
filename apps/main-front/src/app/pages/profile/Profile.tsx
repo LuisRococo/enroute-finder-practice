@@ -1,4 +1,10 @@
-import { GenderEnum, HoroscopeEnum, LookingforEnum, mockPersonalQuestionsList, PersonalQuestion } from '@finder/definitions';
+import {
+   GenderEnum,
+   HoroscopeEnum,
+   LookingforEnum,
+   mockPersonalQuestionsList,
+   PersonalQuestion,
+} from '@finder/definitions';
 import React from 'react';
 import ProfileGallery from '../../components/profile/ProfileGallery';
 import ProfileHeader, { ProfileHeaderInterface } from '../../components/profile/ProfileHeader';
@@ -10,7 +16,8 @@ const profileHeaderMockup: ProfileHeaderInterface = {
    city: 'CDMX',
    country: 'Mexico',
    gender: GenderEnum.Female,
-   image_profile: 'https://www.okchicas.com/wp-content/uploads/2020/08/outfits-y-conjuntos-con-todo-el-estilo-de-una-e-girl-17.png',
+   image_profile:
+      'https://www.okchicas.com/wp-content/uploads/2020/08/outfits-y-conjuntos-con-todo-el-estilo-de-una-e-girl-17.png',
    last_name: 'Horia',
    name: 'Susana',
    lookingfor: LookingforEnum.Friendship,
@@ -37,9 +44,7 @@ const Profile = () => {
             <ProfileHeader {...profileHeaderMockup} />
          </div>
 
-         <div className="profile-pg__gallery-wrapper wrapper">
-            <ProfileGallery pictures={galleryMockup} />
-         </div>
+         <ProfileGallery pictures={galleryMockup} />
 
          <div className="profile-pg__questions-wrapper wrapper">
             <ProfileQuestions questions={mockPersonalQuestionsList} />
