@@ -9,7 +9,7 @@ border-radius: 10px;
 }
 
 .profile-hd__line-decor {
-  // background-color: var(--main-color);
+  background-color: var(--main-color);
   position: absolute;
   top: 0;
   left: 0;
@@ -73,7 +73,7 @@ border-radius: 10px;
 
 .profile-hd__check {
   align-items: center;
-  background-color: var(--dark-gray-color);
+  background-color: #9c9c9c;
   display: inline-flex;
   padding: 10px 10px;
   border-radius: 7px;

@@ -1,6 +1,10 @@
 import React, { FC, useEffect, useState } from 'react';
 import './styles.scss';
-import routes, { navLoggedRoutes, navUnloggedRoutes, routesHideNav } from 'apps/main-front/src/util/routes';
+import routes, {
+   navLoggedRoutes,
+   navUnloggedRoutes,
+   routesHideNav,
+} from 'apps/main-front/src/util/routes';
 import { Link, useLocation } from 'react-router-dom';
 import { logoutUser, shouldBeHidden } from 'apps/main-front/src/util/util';
 import { FaUserCircle } from 'react-icons/fa';
@@ -77,7 +81,11 @@ const NavBar: FC = () => {
                         <>
                            {navLoggedRoutes.map((route: any, key: number) => {
                               return (
-                                 <Link key={'nav-item-logged' + key} className="nav__url" to={route.url}>
+                                 <Link
+                                    key={'nav-item-logged' + key}
+                                    className="nav__url"
+                                    to={route.url}
+                                 >
                                     <li className="nav__item">{route.name}</li>
                                  </Link>
                               );
