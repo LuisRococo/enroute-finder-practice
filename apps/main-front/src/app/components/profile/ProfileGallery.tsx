@@ -13,10 +13,8 @@ const imgsHeight = 500;
 
 const images: ReadonlyArray<ReactImageGalleryItem> = [
    {
-      original:
-         'https://www.okchicas.com/wp-content/uploads/2020/08/outfits-y-conjuntos-con-todo-el-estilo-de-una-e-girl-17.png',
-      thumbnail:
-         'https://www.okchicas.com/wp-content/uploads/2020/08/outfits-y-conjuntos-con-todo-el-estilo-de-una-e-girl-17.png',
+      original: 'https://www.fs.usda.gov/Internet/FSE_MEDIA/fseprd923724.jpg',
+      thumbnail: 'https://www.fs.usda.gov/Internet/FSE_MEDIA/fseprd923724.jpg',
       originalHeight: imgsHeight,
    },
    {
