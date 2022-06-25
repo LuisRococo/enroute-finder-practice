@@ -1,14 +1,17 @@
 import { CreateUserDTO, GetUserDTO, GetUsersDTO, LoginDTO } from '@finder/definitions';
 import { Get, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { hashPassword } from 'apps/auth-service/src/utils/auth';
+import { hashPassword } from 'apps/auth-service/src/app/utils/auth';
 import { Model, Types } from 'mongoose';
 import { UserDocument } from '../../models/user';
 import AboutService from '../about/about.service';
 
 @Injectable()
 export default class UserService {
-   constructor(@InjectModel('User') private userModel: Model<UserDocument>, private aboutService: AboutService) {}
+   constructor(
+      @InjectModel('User') private userModel: Model<UserDocument>,
+      private aboutService: AboutService
+   ) {}
 
    async getUser(userFilter: GetUserDTO): Promise<UserDocument> {
       const user = await this.userModel
@@ -25,8 +28,16 @@ export default class UserService {
    async getAllusers(queryOptions: GetUsersDTO): Promise<UserDocument[]> {
       return await this.userModel
          .find()
-         .limit(queryOptions.limit && queryOptions.limit > 0 && queryOptions.limit <= 10 ? Math.round(queryOptions.limit) : 10)
-         .skip(queryOptions.offset && queryOptions.offset > 0 && queryOptions.offset <= 10 ? Math.round(queryOptions.offset) : 0);
+         .limit(
+            queryOptions.limit && queryOptions.limit > 0 && queryOptions.limit <= 10
+               ? Math.round(queryOptions.limit)
+               : 10
+         )
+         .skip(
+            queryOptions.offset && queryOptions.offset > 0 && queryOptions.offset <= 10
+               ? Math.round(queryOptions.offset)
+               : 0
+         );
    }
 
    async createUser(user: CreateUserDTO): Promise<UserDocument> {

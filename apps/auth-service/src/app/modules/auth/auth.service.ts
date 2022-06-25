@@ -3,11 +3,14 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import UserService from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { createHmac } from 'crypto';
-import { hashPassword } from 'apps/auth-service/src/utils/auth';
+import { hashPassword } from 'apps/auth-service/src/app/utils/auth';
 
 @Injectable()
 export default class AuthService {
-   constructor(private readonly userService: UserService, private readonly jwtService: JwtService) {}
+   constructor(
+      private readonly userService: UserService,
+      private readonly jwtService: JwtService
+   ) {}
    async login(info: LoginDTO): Promise<AuthDAO> {
       const user: User = await this.userService.getUser(info);
 

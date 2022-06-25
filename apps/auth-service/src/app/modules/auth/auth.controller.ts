@@ -4,8 +4,8 @@ import { Types } from 'mongoose';
 import { UserDocument } from '../../models/user';
 import UserService from '../user/user.service';
 import AuthService from './auth.service';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
-import { LocalAuthGuard } from './guards/local-auth.guard';
+import { JwtAuthGuard } from '../../guards/jwt-auth.guard';
+import { LocalAuthGuard } from '../../guards/local-auth.guard';
 
 @Controller('auth')
 export default class AuthController {
