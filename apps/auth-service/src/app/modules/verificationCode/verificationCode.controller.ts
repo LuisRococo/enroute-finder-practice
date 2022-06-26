@@ -11,7 +11,7 @@ export default class VerificationCodeController {
    @Get()
    @UseGuards(JwtAuthGuard)
    async getVerificationCode(@Request() req): Promise<GetVerificationCodeDAO> {
-      const userId: Types.ObjectId = new Types.ObjectId(req.user.user_id);
+      const userId: Types.ObjectId = new Types.ObjectId(req.user.sub);
       return await this.verificationService.getVerificationCode(userId);
    }
 }

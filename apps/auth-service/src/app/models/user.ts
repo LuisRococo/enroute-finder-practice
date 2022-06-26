@@ -46,3 +46,8 @@ export class UserMongo implements User {
 export type UserDocument = UserMongo & Document;
 
 export const UserSchema = SchemaFactory.createForClass(UserMongo);
+
+// UserSchema.pre('remove', function (next) {
+//    console.log(this?._id);
+//    this?.$model('abouts').remove({ _id: this?._id }, next);
+// });

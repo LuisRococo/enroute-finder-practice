@@ -14,9 +14,9 @@ export default class AuthController {
    //EL DECORADOR USERGUARD HACE QUE SE EJECUTE EL CODIGO DEL GUARD ANTES DE ESA RUTA
    @UseGuards(LocalAuthGuard)
    @Post('login')
-   login(@Request() req: UserDocument) {
-      const loginDTO: LoginDTO = { email: req.email, password: req.password };
-      return this.authService.login(loginDTO);
+   async login(@Request() req): Promise<AuthDAO> {
+      const loginDTO: LoginDTO = { email: req.user.email, password: req.user.password };
+      return await this.authService.login(loginDTO);
    }
 
    @UseGuards(JwtAuthGuard)

@@ -12,3 +12,7 @@ export interface CreateUserDAO {
    preference: string;
    lookingfor: LookingforEnum;
 }
+
+export interface DeleteUserDAO {
+   deleted: boolean;
+}

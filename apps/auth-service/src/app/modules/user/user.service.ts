@@ -1,4 +1,10 @@
-import { CreateUserDTO, GetUserDTO, GetUsersDTO, LoginDTO } from '@finder/definitions';
+import {
+   CreateUserDTO,
+   DeleteUserDAO,
+   GetUserDTO,
+   GetUsersDTO,
+   LoginDTO,
+} from '@finder/definitions';
 import { Get, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { hashPassword } from 'apps/auth-service/src/app/utils/auth';
@@ -16,14 +22,10 @@ export default class UserService {
    ) {}
 
    async getUser(userFilter: GetUserDTO): Promise<UserDocument> {
-      const user = await this.userModel
-         .findOne({
-            userFilter,
-         })
-         .populate({
-            path: 'about',
-            populate: { path: 'personal_questions', model: 'PersonalQuestion' },
-         });
+      const user = await this.userModel.findOne(userFilter).populate({
+         path: 'about',
+         populate: { path: 'personal_questions', model: 'PersonalQuestion' },
+      });
       return user;
    }
 
@@ -54,7 +56,7 @@ export default class UserService {
          about: createdAbout._id,
       });
 
-      this.verificationService.sendVerificationCode(createdUser._id, createdUser.email);
+      // this.verificationService.sendVerificationCode(createdUser._id, createdUser.email);
 
       return createdUser;
    }
@@ -66,5 +68,14 @@ export default class UserService {
       });
 
       return user;
+   }
+
+   async deleteUser(user_id: Types.ObjectId): Promise<DeleteUserDAO> {
+      await this.userModel.findByIdAndDelete(user_id);
+
+      const response: DeleteUserDAO = {
+         deleted: true,
+      };
+      return response;
    }
 }

@@ -1,4 +1,4 @@
-import { AuthDAO, LoginDTO, User, validateUserDTO } from '@finder/definitions';
+import { AuthDAO, LoginDTO, TokenPayload, User, validateUserDTO } from '@finder/definitions';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import UserService from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
@@ -14,12 +14,8 @@ export default class AuthService {
    async login(info: LoginDTO): Promise<AuthDAO> {
       const user: User = await this.userService.getUser(info);
 
-      if (!user) {
-         return null;
-      }
-
-      const payload = {
-         user_id: user._id,
+      const payload: TokenPayload = {
+         sub: user._id.toString(),
          email: user.email,
       };
 

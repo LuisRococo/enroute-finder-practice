@@ -5,23 +5,27 @@ import { PersonalQuestionDocument } from './personalQuestion';
 
 @Schema()
 export class AboutMongo implements About {
-  @Prop({
-    type: SchemaMongoose.Types.ObjectId,
-    default: new Types.ObjectId(),
-  })
-  _id: Types.ObjectId;
-  @Prop({ type: () => HoroscopeEnum, enum: HoroscopeEnum, required: false })
-  horoscope?: HoroscopeEnum;
-  @Prop({
-    type: () => [SchemaMongoose.Types.ObjectId],
-    ref: 'PersonalQuestion',
-    default: [],
-  })
-  personal_questions?: PersonalQuestionDocument[];
-  @Prop({ type: String, required: true })
-  description: string;
+   @Prop({
+      type: SchemaMongoose.Types.ObjectId,
+      default: new Types.ObjectId(),
+   })
+   _id: Types.ObjectId;
+   @Prop({ type: () => HoroscopeEnum, enum: HoroscopeEnum, required: false })
+   horoscope?: HoroscopeEnum;
+   @Prop({
+      type: () => [SchemaMongoose.Types.ObjectId],
+      ref: 'PersonalQuestion',
+      default: [],
+   })
+   personal_questions?: PersonalQuestionDocument[];
+   @Prop({ type: String, required: true })
+   description: string;
 }
 
 export type AboutDocument = AboutMongo & Document;
 
 export const AboutSchema = SchemaFactory.createForClass(AboutMongo);
+
+// AboutSchema.pre('remove', function (next) {
+//    this?.$model('personalquestions').remove({ _id: this?._id }, next);
+// });

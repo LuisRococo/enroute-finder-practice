@@ -1,5 +1,14 @@
-import { CreateUserDAO, CreateUserDTO, GetUserDTO, GetUsersDTO } from '@finder/definitions';
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+   CreateUserDAO,
+   CreateUserDTO,
+   DeleteUserDAO,
+   GetUserDTO,
+   GetUsersDTO,
+   TokenPayload,
+} from '@finder/definitions';
+import { Body, Controller, Delete, Get, Post, Request, Type, UseGuards } from '@nestjs/common';
+import { Types } from 'mongoose';
+import { JwtAuthGuard } from '../../guards/jwt-auth.guard';
 import { UserDocument } from '../../models/user';
 import UserService from './user.service';
 
@@ -32,5 +41,14 @@ export class UserController {
          last_name: userDocument.last_name,
       };
       return createUserDAO;
+   }
+
+   @Delete()
+   @UseGuards(JwtAuthGuard)
+   async DeleteUser(@Request() request): Promise<DeleteUserDAO> {
+      const tokenInfo: TokenPayload = request.user;
+
+      const userIdObject: Types.ObjectId = new Types.ObjectId(tokenInfo.sub);
+      return await this.userService.deleteUser(userIdObject);
    }
 }
