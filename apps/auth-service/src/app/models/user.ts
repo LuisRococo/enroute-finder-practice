@@ -39,7 +39,7 @@ export class UserMongo implements User {
    about: AboutDocument;
    @Prop({ type: () => LookingforEnum, enum: LookingforEnum, required: true })
    lookingfor: LookingforEnum;
-   @Prop({ required: false })
+   @Prop({ required: true, default: false })
    verified: boolean;
 }
 

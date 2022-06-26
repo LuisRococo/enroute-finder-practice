@@ -50,13 +50,18 @@ export default class UserService {
       const hashedPassword: string = hashPassword(user.password);
       user.password = hashedPassword;
 
+      let userValidated = process.env.VERIFICATION_MAIL === 'true' ? false : true;
+
       const createdUser = await this.userModel.create({
          _id: new Types.ObjectId(),
          ...user,
          about: createdAbout._id,
+         verified: userValidated,
       });
 
-      // this.verificationService.sendVerificationCode(createdUser._id, createdUser.email);
+      if (process.env.VERIFICATION_MAIL === 'true') {
+         this.verificationService.sendVerificationCode(createdUser._id, createdUser.email);
+      }
 
       return createdUser;
    }

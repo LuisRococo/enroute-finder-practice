@@ -1,12 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            padding: 20px;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            background-color: white;
+        }
+
+        .logo-cont {
+            text-align: center;
+        }
+
+        .logo-cont img {
+            width: 350px;
+        }
+
+        .logo-cont h3 {
+            font-size: 2rem;
+        }
+
+        .welcome-text-cont {
+            margin: 50px 0;
+        }
+
+        .welcome-text {
+            font-size: 1.3rem;
+            color: rgb(81, 81, 81);
+            font-weight: 500;
+            line-height: 1;
+            margin: 10px 0;
+        }
+
+        .code-cont {
+            background-color: #963de9;
+            padding: 20px 30px;
+            display: inline-block;
+            margin: 0 auto;
+            border-radius: 7px;
+            margin-top: 10px;
+        }
+
+        .code {
+            color: white;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        .verification-code-detail {
+            font-size: 0.8rem;
+            font-style: italic;
+            color: #bbbbbb;
+            line-height: .6;
+            margin: 0;
+        }
+    </style>
 </head>
+
 <body>
-  <h1>Verification code {{code}}</h1>
+
+    <div class="container">
+        <div class="logo-cont">
+            <img src="https://finder-page-bucket.s3.us-west-1.amazonaws.com/page-resources/Screen+Shot+2022-06-25+at+22.06.14.png"
+                alt="">
+        </div>
+
+        <div class="welcome-text-cont">
+            <p class="welcome-text">Welcome and thanks for using our services !</p>
+            <p class="welcome-text">You are at only one step far from meeting awesome people !</p>
+        </div>
+
+        <p class="verification-code-detail">Your verification code</p>
+        <div class="code-cont">
+            <p class="code">{{code}}</p>
+        </div>
+
+    </div>
+
 </body>
+
 </html>
