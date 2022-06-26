@@ -27,4 +27,8 @@ export default class PersonalQuestionService {
       const createdQuestions = await this.personalQuestionModel.insertMany(modifiedQuestions);
       return createdQuestions;
    }
+
+   async deleteQuestion(id_question: Types.ObjectId): Promise<void> {
+      await this.personalQuestionModel.findByIdAndDelete({ _id: id_question });
+   }
 }

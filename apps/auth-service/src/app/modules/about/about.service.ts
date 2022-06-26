@@ -8,10 +8,14 @@ import PersonalQuestionService from '../personalQuestion/personalQuestion.servic
 
 @Injectable()
 export default class AboutService {
-   constructor(private readonly personalQuestionService: PersonalQuestionService, @InjectModel('About') private aboutModel: Model<AboutDocument>) {}
+   constructor(
+      private readonly personalQuestionService: PersonalQuestionService,
+      @InjectModel('About') private aboutModel: Model<AboutDocument>
+   ) {}
 
    async createAbout(aboutDTO: CreateAboutDTO): Promise<AboutDocument> {
-      const createdQuestions: PersonalQuestionDocument[] = await this.personalQuestionService.createQuestions(aboutDTO.personal_questions);
+      const createdQuestions: PersonalQuestionDocument[] =
+         await this.personalQuestionService.createQuestions(aboutDTO.personal_questions);
       const createdAbout: AboutDocument = await this.aboutModel.create({
          ...aboutDTO,
          _id: new Types.ObjectId(),
@@ -19,5 +23,17 @@ export default class AboutService {
       });
 
       return createdAbout;
+   }
+
+   async deleteAbout(id_about: Types.ObjectId): Promise<void> {
+      const aboutDocument: AboutDocument = await this.aboutModel.findById(id_about);
+      const questions: PersonalQuestionDocument[] = aboutDocument.personal_questions;
+
+      for (let index = 0; index < questions.length; index++) {
+         const question = questions[index];
+         await this.personalQuestionService.deleteQuestion(question._id);
+      }
+
+      await this.aboutModel.findByIdAndDelete(id_about);
    }
 }

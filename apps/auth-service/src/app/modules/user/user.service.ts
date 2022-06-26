@@ -71,6 +71,9 @@ export default class UserService {
    }
 
    async deleteUser(user_id: Types.ObjectId): Promise<DeleteUserDAO> {
+      const userDocument: UserDocument = await this.userModel.findById(user_id);
+      await this.aboutService.deleteAbout(userDocument.about._id);
+
       await this.userModel.findByIdAndDelete(user_id);
 
       const response: DeleteUserDAO = {
