@@ -5,12 +5,14 @@ import { hashPassword } from 'apps/auth-service/src/app/utils/auth';
 import { Model, Types } from 'mongoose';
 import { UserDocument } from '../../models/user';
 import AboutService from '../about/about.service';
+import VerificationCodeService from '../verificationCode/verificationCode.service';
 
 @Injectable()
 export default class UserService {
    constructor(
       @InjectModel('User') private userModel: Model<UserDocument>,
-      private aboutService: AboutService
+      private readonly aboutService: AboutService,
+      private readonly verificationService: VerificationCodeService
    ) {}
 
    async getUser(userFilter: GetUserDTO): Promise<UserDocument> {
@@ -51,6 +53,8 @@ export default class UserService {
          ...user,
          about: createdAbout._id,
       });
+
+      this.verificationService.sendVerificationCode(createdUser._id, createdUser.email);
 
       return createdUser;
    }

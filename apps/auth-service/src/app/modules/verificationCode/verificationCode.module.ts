@@ -8,9 +8,7 @@ import VerificationCodeService from './verificationCode.service';
 @Module({
    providers: [VerificationCodeService],
    controllers: [VerificationCodeController],
-   imports: [
-      UserModule,
-      MongooseModule.forFeature([{ name: 'Verification', schema: VerificationSchema }]),
-   ],
+   imports: [MongooseModule.forFeature([{ name: 'Verification', schema: VerificationSchema }])],
+   exports: [VerificationCodeService],
 })
 export class VerificationCodeModule {}

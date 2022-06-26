@@ -1,5 +1,6 @@
 import { GetVerificationCodeDAO } from '@finder/definitions';
-import { Body, Controller, Get, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Request, Type, UseGuards } from '@nestjs/common';
+import { Types } from 'mongoose';
 import { JwtAuthGuard } from '../../guards/jwt-auth.guard';
 import VerificationCodeService from './verificationCode.service';
 
@@ -10,7 +11,7 @@ export default class VerificationCodeController {
    @Get()
    @UseGuards(JwtAuthGuard)
    async getVerificationCode(@Request() req): Promise<GetVerificationCodeDAO> {
-      const userId: string = req.user.user_id;
+      const userId: Types.ObjectId = new Types.ObjectId(req.user.user_id);
       return await this.verificationService.getVerificationCode(userId);
    }
 }
