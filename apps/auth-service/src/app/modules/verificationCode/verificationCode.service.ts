@@ -34,12 +34,12 @@ export default class VerificationCodeService {
    }
 
    async sendVerificationCode(user_id: Types.ObjectId, email: string): Promise<void> {
-      let verificationDoc: VerificationDocument = undefined;
+      let verificationDoc: VerificationDocument = await this.verificationModel.findOne({
+         user_id: user_id,
+      });
       const codeLenght = 5;
-
-      verificationDoc = await this.verificationModel.findOne({ user_id: user_id });
-
       const code: string = generateVerificationCode(codeLenght);
+
       if (verificationDoc) {
          verificationDoc.code = code;
       } else {

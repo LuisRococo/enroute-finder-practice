@@ -62,6 +62,7 @@ export const VerifyCode = () => {
 
          const { status } = await apiPostVerificationCode(sendVerificationCodeDTO);
          if (status === 201) {
+            localStorage.removeItem(LOCAL_STORAGE_KEYS.SIGN_IN_DAO);
             navigate(routes.login.url);
          }
       } catch (error) {
