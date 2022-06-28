@@ -13,6 +13,8 @@ import FormAboutInfo from '../../components/signIn/Forms/FormAboutInfo';
 import { CreateUserDAO, CreateUserDTO } from '@finder/definitions';
 import { SignInInterface } from './utils/types';
 import { apiSignIn } from '../../services/userAPI';
+import { create } from 'domain';
+import { setLocalStorageSignInDAO } from 'apps/main-front/src/util/util';
 
 export const SignIn = () => {
    const [formIndex, setFormIndex] = useState(0);
@@ -31,8 +33,11 @@ export const SignIn = () => {
    async function submitSignIn(values: SignInInterface) {
       try {
          const signInDAO = values as CreateUserDTO;
-         const userDAO: CreateUserDAO = await apiSignIn(signInDAO);
-         navigate(routes.login.url);
+         const createUserDAO: CreateUserDAO = await apiSignIn(signInDAO);
+
+         setLocalStorageSignInDAO(createUserDAO);
+
+         navigate(routes.verification.url);
       } catch (error) {
          alert('There was an error, try it later');
       }
@@ -48,6 +53,10 @@ export const SignIn = () => {
       onSubmit: submitSignIn,
       validationSchema: signInYupSchema,
    });
+
+   useEffect(() => {
+      console.info(formik.errors);
+   }, [formik.errors]);
 
    return (
       <div className={`wrapper ${styles['page']}`}>
@@ -78,6 +87,9 @@ export const SignIn = () => {
                      />
                   </div>
                </form>
+               <Link className={styles['log-in-link']} to={routes.login.url}>
+                  Log in
+               </Link>
             </div>
             <div className={styles['card-decor']}></div>
          </div>

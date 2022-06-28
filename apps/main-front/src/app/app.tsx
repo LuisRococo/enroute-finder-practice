@@ -13,12 +13,14 @@ import { GenericProtectedRoute } from '@finder/components';
 import { useIsAuth } from './hooks/authHook';
 import { SignIn } from './pages/signIn/SignIn';
 import { VerifyCode } from './pages/verifyCode/VerifyCode';
+import useScrollTop from './hooks/scrollTopHook';
 
 const AuthFront = React.lazy(() => import('auth-front/Module'));
 const redirectTo = routes.login.url;
 
 export function App() {
    const { isAuth } = useIsAuth();
+   useScrollTop();
    return (
       <React.Suspense fallback={null}>
          <NavBar />

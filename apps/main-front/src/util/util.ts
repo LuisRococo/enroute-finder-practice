@@ -1,4 +1,4 @@
-import { FRONT_EVENT_NAMES, LOCAL_STORAGE_KEYS } from '@finder/definitions';
+import { CreateUserDAO, FRONT_EVENT_NAMES, LOCAL_STORAGE_KEYS } from '@finder/definitions';
 
 export function shouldBeHidden(actualLocation: string, routesToHide: any) {
    for (let index = 0; index < routesToHide.length; index++) {
@@ -18,4 +18,8 @@ export function setLocalStorageToken(token: string) {
 export function logoutUser() {
    localStorage.removeItem(LOCAL_STORAGE_KEYS.AUTH_TOKEN);
    window.dispatchEvent(new Event(FRONT_EVENT_NAMES.SET_AUTH_TOKEN));
+}
+
+export function setLocalStorageSignInDAO(signInDAO: CreateUserDAO) {
+   localStorage.setItem(LOCAL_STORAGE_KEYS.SIGN_IN_DAO, JSON.stringify(signInDAO));
 }

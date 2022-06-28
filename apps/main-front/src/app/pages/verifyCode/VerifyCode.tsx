@@ -2,14 +2,31 @@ import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { RiHeartsFill } from 'react-icons/ri';
 import { pageName } from '@finder/util';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import routes from 'apps/main-front/src/util/routes';
 import { Button } from '@finder/components';
+import {
+   CreateUserDAO,
+   LOCAL_STORAGE_KEYS,
+   validateVerificationCodeDTO,
+} from '@finder/definitions';
+import { apiPostVerificationCode } from '../../services/userAPI';
 
 export const VerifyCode = () => {
    const codeLenght: number = 5;
    const [codeInputValue, setCodeInputValue] = useState<string[]>([]);
    const [showError, setShowError] = useState<boolean>(false);
+   const navigate = useNavigate();
+   const [signInDAO] = useState(getSignInDAO);
+
+   function getSignInDAO() {
+      const signInDAO: string | null = localStorage.getItem(LOCAL_STORAGE_KEYS.SIGN_IN_DAO);
+      if (signInDAO) {
+         const signInObj: CreateUserDAO = JSON.parse(signInDAO);
+         return signInObj;
+      }
+      return null;
+   }
 
    function handleInputChange(element: HTMLInputElement, arrayKey: number) {
       const arrayValues = [...codeInputValue];
@@ -24,13 +41,31 @@ export const VerifyCode = () => {
       setCodeInputValue(arrayValues);
    }
 
-   function handleSubmit() {
-      const code: string = codeInputValue.reduce((newCode, character) => {
-         return newCode + character;
-      });
+   async function handleSubmit() {
+      try {
+         const code: string = codeInputValue.reduce((newCode, character) => {
+            return newCode + character;
+         });
 
-      if (code.length !== codeLenght) {
-         setShowError(true);
+         if (code.length !== codeLenght) {
+            setShowError(true);
+            return;
+         }
+
+         if (!signInDAO) return;
+
+         const sendVerificationCodeDTO: validateVerificationCodeDTO = {
+            email: signInDAO.email,
+            id_user: signInDAO.id_user,
+            code: code,
+         };
+
+         const { status } = await apiPostVerificationCode(sendVerificationCodeDTO);
+         if (status === 201) {
+            navigate(routes.login.url);
+         }
+      } catch (error) {
+         alert('There was a problem with your verification code, please try again');
       }
    }
 
@@ -41,6 +76,10 @@ export const VerifyCode = () => {
       }
       setCodeInputValue(defaultInputState);
    }, []);
+
+   if (!signInDAO) {
+      return <Navigate to={routes.home.url} />;
+   }
 
    return (
       <div className={styles['container']}>
@@ -69,6 +108,7 @@ export const VerifyCode = () => {
                            key={`input-code-${key}`}
                            maxLength={1}
                            type="text"
+                           autoFocus={key === 0}
                            className={styles['verification-input']}
                            value={value}
                            onChange={(e) => {

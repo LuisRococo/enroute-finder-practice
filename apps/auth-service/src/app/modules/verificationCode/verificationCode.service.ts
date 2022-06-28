@@ -1,6 +1,6 @@
-import { GetVerificationCodeDAO } from '@finder/definitions';
+import { GetVerificationCodeDAO, validateVerificationCodeDTO } from '@finder/definitions';
 import { MailerService } from '@nestjs-modules/mailer';
-import { Injectable } from '@nestjs/common';
+import { HttpCode, HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { UserDocument, UserSchema } from '../../models/user';
@@ -25,12 +25,21 @@ export default class VerificationCodeService {
       return verificationDAO;
    }
 
+   async getVerificationCodeWithUser(id_user: Types.ObjectId, code: string) {
+      const codeDocument: VerificationDocument = await this.verificationModel.findOne({
+         code: code,
+         id_user: id_user,
+      });
+      return codeDocument;
+   }
+
    async sendVerificationCode(user_id: Types.ObjectId, email: string): Promise<void> {
       let verificationDoc: VerificationDocument = undefined;
+      const codeLenght = 5;
 
       verificationDoc = await this.verificationModel.findOne({ user_id: user_id });
 
-      const code: string = generateVerificationCode();
+      const code: string = generateVerificationCode(codeLenght);
       if (verificationDoc) {
          verificationDoc.code = code;
       } else {

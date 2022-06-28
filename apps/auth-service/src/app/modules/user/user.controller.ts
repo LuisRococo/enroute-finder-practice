@@ -5,6 +5,7 @@ import {
    GetUserDTO,
    GetUsersDTO,
    TokenPayload,
+   validateVerificationCodeDTO,
 } from '@finder/definitions';
 import { Body, Controller, Delete, Get, Post, Request, Type, UseGuards } from '@nestjs/common';
 import { Types } from 'mongoose';
@@ -28,19 +29,7 @@ export class UserController {
 
    @Post()
    async createUser(@Body() createUserDTO: CreateUserDTO): Promise<CreateUserDAO> {
-      const userDocument = await this.userService.createUser(createUserDTO);
-      const createUserDAO: CreateUserDAO = {
-         age: userDocument.age,
-         email: userDocument.email,
-         gender: userDocument.gender,
-         image_profile: userDocument.image_profile,
-         lookingfor: userDocument.lookingfor,
-         name: userDocument.name,
-         phone: userDocument.phone,
-         preference: userDocument.preference,
-         last_name: userDocument.last_name,
-      };
-      return createUserDAO;
+      return await this.userService.createUser(createUserDTO);
    }
 
    @Delete()
@@ -50,5 +39,10 @@ export class UserController {
 
       const userIdObject: Types.ObjectId = new Types.ObjectId(tokenInfo.sub);
       return await this.userService.deleteUser(userIdObject);
+   }
+
+   @Post('verify')
+   async VerifyUser(@Body() body: validateVerificationCodeDTO) {
+      return await this.userService.validateAccount(body);
    }
 }

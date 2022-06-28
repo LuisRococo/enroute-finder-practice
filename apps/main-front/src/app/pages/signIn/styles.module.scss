@@ -93,6 +93,16 @@
       }
     }
   }
+
+  .log-in-link {
+    text-align: right;
+    color: var(--main-color);
+    font-size: 1.1rem;
+    margin-top: 25px;
+    width: var(--form-width);
+    padding: 0 20px;
+  }
+
   .btn {
     background-color: var(--main-color);
   }

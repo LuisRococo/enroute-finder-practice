@@ -1,15 +1,19 @@
 import {
+   CreateUserDAO,
    CreateUserDTO,
    DeleteUserDAO,
    GetUserDTO,
    GetUsersDTO,
    LoginDTO,
+   validateVerificationCodeDTO,
 } from '@finder/definitions';
-import { Get, Injectable } from '@nestjs/common';
+import { Get, HttpCode, HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { hashPassword } from 'apps/auth-service/src/app/utils/auth';
+import { Exception } from 'handlebars';
 import { Model, Types } from 'mongoose';
 import { UserDocument } from '../../models/user';
+import { VerificationDocument } from '../../models/verification';
 import AboutService from '../about/about.service';
 import VerificationCodeService from '../verificationCode/verificationCode.service';
 
@@ -44,7 +48,7 @@ export default class UserService {
          );
    }
 
-   async createUser(user: CreateUserDTO): Promise<UserDocument> {
+   async createUser(user: CreateUserDTO): Promise<CreateUserDAO> {
       const createdAbout = await this.aboutService.createAbout(user.about);
 
       const hashedPassword: string = hashPassword(user.password);
@@ -59,11 +63,20 @@ export default class UserService {
          verified: userValidated,
       });
 
-      if (process.env.VERIFICATION_MAIL === 'true') {
-         this.verificationService.sendVerificationCode(createdUser._id, createdUser.email);
+      try {
+         if (process.env.VERIFICATION_MAIL === 'true') {
+            this.verificationService.sendVerificationCode(createdUser._id, createdUser.email);
+         }
+      } catch (error) {
+         throw new HttpException('Amazon SES error', HttpStatus.INTERNAL_SERVER_ERROR);
       }
 
-      return createdUser;
+      const response: CreateUserDAO = {
+         email: createdUser.email,
+         id_user: createdUser._id,
+      };
+
+      return response;
    }
 
    async findUserByLogin(info: LoginDTO): Promise<UserDocument | undefined> {
@@ -85,5 +98,17 @@ export default class UserService {
          deleted: true,
       };
       return response;
+   }
+
+   async validateAccount(params: validateVerificationCodeDTO): Promise<void> {
+      const codeDocument: VerificationDocument =
+         await this.verificationService.getVerificationCodeWithUser(params.id_user, params.code);
+      if (!codeDocument) {
+         throw new HttpException('Code does not exists on user', HttpStatus.UNAUTHORIZED);
+      }
+
+      const userDocument: UserDocument = await this.userModel.findById(params.id_user);
+      userDocument.verified = true;
+      await userDocument.save();
    }
 }

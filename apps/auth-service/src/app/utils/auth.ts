@@ -6,10 +6,9 @@ export function hashPassword(password: string): string {
    return hashPassword;
 }
 
-export function generateVerificationCode(): string {
+export function generateVerificationCode(codeLenght: number): string {
    const validCharacters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
    let code = '';
-   const codeLenght: number = 7;
 
    for (let i = 0; i < codeLenght; i++) {
       const rndCharacter = validCharacters[randomInt(0, validCharacters.length)];
