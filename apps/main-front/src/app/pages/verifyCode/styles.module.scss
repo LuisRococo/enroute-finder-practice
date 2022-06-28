@@ -1,0 +1,97 @@
+.hidden {
+  visibility: hidden;
+}
+
+.container {
+  min-height: 100vh;
+  background-color: rgb(243, 243, 243);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .verification-card {
+    min-width: 200px;
+    width: 550px;
+    background-color: white;
+    padding: 40px 30px;
+    color: rgb(59, 59, 59);
+    border-radius: 10px;
+
+    .logo-cont {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 40px;
+
+      .logo {
+        font-size: 80px;
+        color: var(--main-color);
+        margin-right: 10px;
+      }
+
+      .logo-text {
+        font-size: 2.4rem;
+        font-weight: bold;
+        color: rgb(66, 66, 66);
+      }
+    }
+
+    .card-title{
+      font-size: 1.4rem;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .verify-message {
+      font-size: 1.1rem;
+      color: rgb(126, 126, 126);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .verification-box {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 30px 0;
+
+      .code-error {
+        color: rgb(185, 17, 17);
+        font-style: italic;
+        font-size: 1rem;
+        margin: 5px 0 7px;
+      }
+
+      .verification-input{
+        width: 40px;
+        height: 50px;
+        padding: 5px;
+        font-size: 1.7rem;
+        text-align: center;
+        margin: 5px;
+        color: var(--main-color);
+        font-weight: bold;
+        border-color: rgb(200, 200, 200);
+        border-style: solid;
+      }
+    }
+
+    .card-footer {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .card-footer-text {
+        max-width: 200px;
+        color: rgb(188, 188, 188);
+        font-style: italic;
+      }
+
+      .card-btn {
+        background-color: var(--main-color);
+      }
+    }
+  }
+}

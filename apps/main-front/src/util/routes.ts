@@ -19,14 +19,18 @@ const routes = {
       url: '/profile',
       name: 'Profile',
    },
+   verification: {
+      url: '/verification',
+      name: 'verification',
+   },
 };
 
 export const navUnloggedRoutes = [routes.home, routes.login];
 
 export const navLoggedRoutes = [routes.home, routes.find, routes.profile];
 
-export const routesHideNav = [routes.login, routes.signup];
+export const routesHideNav = [routes.login, routes.signup, routes.verification];
 
-export const routesHideFooter = [routes.login, routes.signup];
+export const routesHideFooter = [routes.login, routes.signup, routes.verification];
 
 export default routes;

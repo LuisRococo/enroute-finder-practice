@@ -12,6 +12,7 @@ import React from 'react';
 import { GenericProtectedRoute } from '@finder/components';
 import { useIsAuth } from './hooks/authHook';
 import { SignIn } from './pages/signIn/SignIn';
+import { VerifyCode } from './pages/verifyCode/VerifyCode';
 
 const AuthFront = React.lazy(() => import('auth-front/Module'));
 const redirectTo = routes.login.url;
@@ -58,6 +59,8 @@ export function App() {
                   </GenericProtectedRoute>
                }
             />
+
+            <Route path={routes.verification.url} element={<VerifyCode />} />
 
             <Route path={routes.home.url} element={<Home />} />
          </Routes>
