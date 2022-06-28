@@ -16,7 +16,7 @@ export const VerifyCode = () => {
       const newValue = element.value.toUpperCase();
       arrayValues[arrayKey] = newValue;
 
-      if (element.nextSibling) {
+      if (element.nextSibling && newValue !== '') {
          (element.nextSibling as HTMLElement).focus();
       }
 
