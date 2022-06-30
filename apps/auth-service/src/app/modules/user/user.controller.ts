@@ -1,4 +1,5 @@
 import {
+   AuthRoutes,
    CreateUserDAO,
    CreateUserDTO,
    DeleteUserDAO,
@@ -13,26 +14,26 @@ import { JwtAuthGuard } from '../../guards/jwt-auth.guard';
 import { UserDocument } from '../../models/user';
 import UserService from './user.service';
 
-@Controller('user')
+@Controller(AuthRoutes.USER.prefix)
 export class UserController {
    constructor(private readonly userService: UserService) {}
 
-   @Get()
+   @Get(AuthRoutes.USER.GET.path)
    async getuser(@Body() getUserDTO: GetUserDTO): Promise<UserDocument> {
       return await this.userService.getUser(getUserDTO);
    }
 
-   @Get('all')
+   @Get(AuthRoutes.USER.GET_ALL.path)
    async getAllusers(@Body() getUsersDTO: GetUsersDTO): Promise<UserDocument[]> {
       return await this.userService.getAllusers(getUsersDTO);
    }
 
-   @Post()
+   @Post(AuthRoutes.USER.CREATE.path)
    async createUser(@Body() createUserDTO: CreateUserDTO): Promise<CreateUserDAO> {
       return await this.userService.createUser(createUserDTO);
    }
 
-   @Delete()
+   @Delete(AuthRoutes.USER.DELETE.path)
    @UseGuards(JwtAuthGuard)
    async DeleteUser(@Request() request): Promise<DeleteUserDAO> {
       const tokenInfo: TokenPayload = request.user;
@@ -41,7 +42,7 @@ export class UserController {
       return await this.userService.deleteUser(userIdObject);
    }
 
-   @Post('verify')
+   @Post(AuthRoutes.USER.VERIFY.path)
    async VerifyUser(@Body() body: validateVerificationCodeDTO) {
       return await this.userService.validateAccount(body);
    }

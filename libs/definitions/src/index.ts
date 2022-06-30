@@ -9,3 +9,5 @@ export * from './lib/about/index';
 export * from './lib/localStorage/index';
 export * from './lib/events/index';
 export * from './lib/verification/index';
+export * from './lib/routes/index';
+export * from './lib/authentication-service';
