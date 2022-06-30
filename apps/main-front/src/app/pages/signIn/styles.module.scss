@@ -80,6 +80,10 @@
       }
     }
 
+    .form-button-area--one-btn {
+      justify-content: right;
+    }
+
     .form-card {
       max-height: 350px;
       min-width: var(--form-width);

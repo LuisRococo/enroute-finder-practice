@@ -47,13 +47,7 @@ export const FormMainInfo: FC<FormCardInterface> = ({ moveNext, movePrevious, fo
             />
          </div>
 
-         <div className={styles['form-button-area']}>
-            <Button
-               onClick={movePrevious}
-               className={`${styles['button-return']} ${styles['btn']}`}
-               text="Return"
-               type="button"
-            />
+         <div className={`${styles['form-button-area']} ${styles['form-button-area--one-btn']}`}>
             <Button
                onClick={moveNext}
                className={`${styles['button-next']} ${styles['btn']}`}
