@@ -1,5 +1,5 @@
 import { AuthDAO, LoginDTO, TokenPayload, User, validateUserDTO } from '@finder/definitions';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { HttpException, Injectable, UnauthorizedException } from '@nestjs/common';
 import UserService from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { createHmac } from 'crypto';
@@ -13,6 +13,10 @@ export default class AuthService {
    ) {}
    async login(info: LoginDTO): Promise<AuthDAO> {
       const user: User = await this.userService.getUser(info);
+
+      if (!user.verified) {
+         new HttpException('User is not verified', 403);
+      }
 
       const payload: TokenPayload = {
          sub: user._id.toString(),
