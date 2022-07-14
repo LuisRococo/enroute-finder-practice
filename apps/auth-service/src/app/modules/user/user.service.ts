@@ -100,14 +100,17 @@ export default class UserService {
       return response;
    }
 
-   async validateAccount(params: validateVerificationCodeDTO): Promise<void> {
+   async validateAccount(verifyDTO: validateVerificationCodeDTO): Promise<void> {
       const codeDocument: VerificationDocument =
-         await this.verificationService.getVerificationCodeWithUser(params.id_user, params.code);
+         await this.verificationService.getVerificationCodeWithUser(
+            verifyDTO.id_user,
+            verifyDTO.code
+         );
       if (!codeDocument) {
          throw new HttpException('Code does not exists on user', HttpStatus.UNAUTHORIZED);
       }
 
-      const userDocument: UserDocument = await this.userModel.findById(params.id_user);
+      const userDocument: UserDocument = await this.userModel.findById(verifyDTO.id_user);
       userDocument.verified = true;
       await userDocument.save();
    }
