@@ -3,6 +3,7 @@ import { MailerService } from '@nestjs-modules/mailer';
 import { HttpCode, HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
+import { env } from 'process';
 import { UserDocument, UserSchema } from '../../models/user';
 import { VerificationDocument } from '../../models/verification';
 import { generateVerificationCode } from '../../utils/auth';
@@ -34,6 +35,8 @@ export default class VerificationCodeService {
    }
 
    async sendVerificationCode(user_id: Types.ObjectId, email: string): Promise<void> {
+      if (process.env.VERIFICATION_MAIL === 'false') return;
+
       let verificationDoc: VerificationDocument = await this.verificationModel.findOne({
          user_id: user_id,
       });

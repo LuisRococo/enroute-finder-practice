@@ -64,9 +64,7 @@ export default class UserService {
       });
 
       try {
-         if (process.env.VERIFICATION_MAIL === 'true') {
-            this.verificationService.sendVerificationCode(createdUser._id, createdUser.email);
-         }
+         this.verificationService.sendVerificationCode(createdUser._id, createdUser.email);
       } catch (error) {
          throw new HttpException('Amazon SES error', HttpStatus.INTERNAL_SERVER_ERROR);
       }
