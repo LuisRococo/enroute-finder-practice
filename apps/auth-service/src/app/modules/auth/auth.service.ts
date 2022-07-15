@@ -15,7 +15,7 @@ export default class AuthService {
       const user: User = await this.userService.getUser(info);
 
       if (!user.verified) {
-         new HttpException('User is not verified', 403);
+         throw new HttpException('User is not verified', 403);
       }
 
       const payload: TokenPayload = {
