@@ -11,7 +11,7 @@ import { Get, HttpCode, HttpException, HttpStatus, Injectable } from '@nestjs/co
 import { InjectModel } from '@nestjs/mongoose';
 import { hashPassword } from 'apps/auth-service/src/app/utils/auth';
 import { Exception } from 'handlebars';
-import { Model, Types } from 'mongoose';
+import { Model, mongo, Mongoose, SchemaTypes, Types } from 'mongoose';
 import { UserDocument } from '../../models/user';
 import { VerificationDocument } from '../../models/verification';
 import AboutService from '../about/about.service';
@@ -101,7 +101,7 @@ export default class UserService {
    async validateAccount(verifyDTO: validateVerificationCodeDTO): Promise<void> {
       const codeDocument: VerificationDocument =
          await this.verificationService.getVerificationCodeWithUser(
-            verifyDTO.id_user,
+            new Types.ObjectId(verifyDTO.id_user),
             verifyDTO.code
          );
       if (!codeDocument) {

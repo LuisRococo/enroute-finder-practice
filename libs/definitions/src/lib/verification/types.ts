@@ -12,6 +12,7 @@ export interface GetVerificationCodeDAO {
    code: string;
 }
 
-export interface validateVerificationCodeDTO extends CreateUserDAO {
+export interface validateVerificationCodeDTO {
+   id_user: string;
    code: string;
 }

@@ -1,4 +1,11 @@
-import { AuthDAO, LoginDTO, TokenPayload, User, validateUserDTO } from '@finder/definitions';
+import {
+   AuthDAO,
+   LoginDTO,
+   TokenPayload,
+   UnverifiedUserDAO,
+   User,
+   validateUserDTO,
+} from '@finder/definitions';
 import { HttpException, Injectable, UnauthorizedException } from '@nestjs/common';
 import UserService from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
@@ -18,7 +25,9 @@ export default class AuthService {
 
       if (!user.verified) {
          this.verificationService.sendVerificationCode(user._id, user.email);
-         throw new HttpException('User is not verified', 403);
+
+         const responseData: UnverifiedUserDAO = { userId: user._id.toString() };
+         throw new HttpException(responseData, 403);
       }
 
       const payload: TokenPayload = {

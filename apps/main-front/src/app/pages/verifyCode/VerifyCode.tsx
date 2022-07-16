@@ -8,6 +8,7 @@ import { Button } from '@finder/components';
 import {
    CreateUserDAO,
    LOCAL_STORAGE_KEYS,
+   UnverifiedUserDAO,
    validateVerificationCodeDTO,
 } from '@finder/definitions';
 import { apiPostVerificationCode } from '../../services/userAPI';
@@ -17,12 +18,13 @@ export const VerifyCode = () => {
    const [codeInputValue, setCodeInputValue] = useState<string[]>([]);
    const [showError, setShowError] = useState<boolean>(false);
    const navigate = useNavigate();
-   const [signInDAO] = useState(getSignInDAO);
+   const [unverifiedUserDAO] = useState(getUnverifiedUserDAO());
 
-   function getSignInDAO() {
-      const signInDAO: string | null = localStorage.getItem(LOCAL_STORAGE_KEYS.SIGN_IN_DAO);
+   function getUnverifiedUserDAO() {
+      const signInDAO: string | null = localStorage.getItem(LOCAL_STORAGE_KEYS.USER_ID);
+
       if (signInDAO) {
-         const signInObj: CreateUserDAO = JSON.parse(signInDAO);
+         const signInObj: UnverifiedUserDAO = JSON.parse(signInDAO);
          return signInObj;
       }
       return null;
@@ -52,15 +54,17 @@ export const VerifyCode = () => {
             return;
          }
 
-         if (!signInDAO) return;
+         if (!unverifiedUserDAO) {
+            return;
+         }
 
          const sendVerificationCodeDTO: validateVerificationCodeDTO = {
-            email: signInDAO.email,
-            id_user: signInDAO.id_user,
+            id_user: unverifiedUserDAO.userId,
             code: code,
          };
 
          const { status } = await apiPostVerificationCode(sendVerificationCodeDTO);
+
          if (status === 201) {
             localStorage.removeItem(LOCAL_STORAGE_KEYS.SIGN_IN_DAO);
             navigate(routes.login.url);
@@ -78,7 +82,7 @@ export const VerifyCode = () => {
       setCodeInputValue(defaultInputState);
    }, []);
 
-   if (!signInDAO) {
+   if (!unverifiedUserDAO) {
       return <Navigate to={routes.home.url} />;
    }
 

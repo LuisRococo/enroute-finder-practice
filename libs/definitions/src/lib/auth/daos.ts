@@ -1,3 +1,7 @@
 export class AuthDAO {
-  jwt: string;
+   jwt: string;
+}
+
+export interface UnverifiedUserDAO {
+   userId: string;
 }

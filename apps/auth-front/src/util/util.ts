@@ -9,8 +9,3 @@ export function shouldBeHidden(actualLocation: string, routesToHide: any) {
    }
    return false;
 }
-
-export function saveAuthToken(authDao: AuthDAO) {
-   const token: string = authDao.jwt;
-   window.localStorage.setItem(LOCAL_STORAGE_KEYS.AUTH_TOKEN, token);
-}

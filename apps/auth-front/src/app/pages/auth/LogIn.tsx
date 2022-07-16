@@ -6,10 +6,10 @@ import { AuthDAO, FRONT_EVENT_NAMES, LoginDTO } from '@finder/definitions';
 import { LoginFormValidation } from './FormConfig';
 import { Button, FilledInput } from '@finder/components';
 import { loginService } from '../../services/authServices';
-import { saveAuthToken } from 'apps/auth-front/src/util/util';
 import styles from './styles.module.scss';
 import { LoginLogo } from '../../components/LoginLogo';
 import { AiFillHeart } from 'react-icons/ai';
+import { saveAuthToken } from 'apps/auth-front/src/util/localStorage';
 
 function LogIn() {
    const formik = useFormik<LoginDTO>({
@@ -28,7 +28,6 @@ function LogIn() {
          window.dispatchEvent(new Event(FRONT_EVENT_NAMES.SET_AUTH_TOKEN));
       } catch (error: any) {
          formik.values.password = '';
-         alert('Check your email and password');
       }
    }
 

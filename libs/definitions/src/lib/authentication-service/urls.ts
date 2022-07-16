@@ -35,6 +35,7 @@ export const AuthRoutes: AuthServiceRoutes = {
       CREATE: {
          method: HttpMethod.POST,
          path: '',
+         getPath: () => '/' + AuthRoutes.ABOUT.prefix + '/' + AuthRoutes.ABOUT.CREATE.path,
       },
    },
    AUTH: {
@@ -42,10 +43,12 @@ export const AuthRoutes: AuthServiceRoutes = {
       LOGIN: {
          method: HttpMethod.POST,
          path: 'login',
+         getPath: () => '/' + AuthRoutes.AUTH.prefix + '/' + AuthRoutes.AUTH.LOGIN.path,
       },
       PROFILE: {
          method: HttpMethod.GET,
          path: 'user-profile',
+         getPath: () => '/' + AuthRoutes.ABOUT.prefix + '/' + AuthRoutes.AUTH.PROFILE.path,
       },
    },
    PERSONAL_QUESTION: {
@@ -53,10 +56,20 @@ export const AuthRoutes: AuthServiceRoutes = {
       CREATE: {
          method: HttpMethod.POST,
          path: '',
+         getPath: () =>
+            '/' +
+            AuthRoutes.PERSONAL_QUESTION.prefix +
+            '/' +
+            AuthRoutes.PERSONAL_QUESTION.CREATE.path,
       },
       CREATE_MANY: {
          method: HttpMethod.POST,
          path: 'create-multiple',
+         getPath: () =>
+            '/' +
+            AuthRoutes.PERSONAL_QUESTION.prefix +
+            '/' +
+            AuthRoutes.PERSONAL_QUESTION.CREATE_MANY.path,
       },
    },
    USER: {
@@ -64,22 +77,27 @@ export const AuthRoutes: AuthServiceRoutes = {
       GET: {
          method: HttpMethod.GET,
          path: '',
+         getPath: () => '/' + AuthRoutes.USER.prefix + '/' + AuthRoutes.USER.GET.path,
       },
       GET_ALL: {
          method: HttpMethod.GET,
          path: 'all',
+         getPath: () => '/' + AuthRoutes.USER.prefix + '/' + AuthRoutes.USER.GET_ALL.path,
       },
       CREATE: {
          method: HttpMethod.POST,
          path: '',
+         getPath: () => '/' + AuthRoutes.USER.prefix + '/' + AuthRoutes.USER.CREATE.path,
       },
       DELETE: {
          method: HttpMethod.POST,
          path: '',
+         getPath: () => '/' + AuthRoutes.USER.prefix + '/' + AuthRoutes.USER.DELETE.path,
       },
       VERIFY: {
          method: HttpMethod.POST,
          path: 'verify',
+         getPath: () => '/' + AuthRoutes.USER.prefix + '/' + AuthRoutes.USER.VERIFY.path,
       },
    },
    VERIFICATION_CODE: {
@@ -87,6 +105,8 @@ export const AuthRoutes: AuthServiceRoutes = {
       GET: {
          method: HttpMethod.GET,
          path: '',
+         getPath: () =>
+            '/' + AuthRoutes.VERIFICATION_CODE.prefix + '/' + AuthRoutes.VERIFICATION_CODE.GET.path,
       },
    },
 };
