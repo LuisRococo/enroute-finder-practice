@@ -18,5 +18,6 @@ export interface ControllerRoutes {
 }
 
 export interface ServiceRoutes {
-   [k: string]: ControllerRoutes;
+   prefix: string;
+   [k: string]: ControllerRoutes | string;
 }

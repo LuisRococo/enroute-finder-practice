@@ -30,6 +30,7 @@ export interface AuthServiceRoutes extends ServiceRoutes {
 }
 
 export const AuthRoutes: AuthServiceRoutes = {
+   prefix: 'auth',
    ABOUT: {
       prefix: 'about',
       CREATE: {

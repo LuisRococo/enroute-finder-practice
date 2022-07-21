@@ -1,8 +1,9 @@
+import { AuthRoutes } from '@finder/definitions';
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import { createAuthError } from '../utils/authError';
 
 export const axiosAuthInstance: AxiosInstance = axios.create({
-   baseURL: process.env['NX_API_URL'],
+   baseURL: process.env['NX_API_URL'] + '/' + AuthRoutes.prefix,
    timeout: 4000,
 });
 
