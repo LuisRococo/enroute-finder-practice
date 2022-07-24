@@ -13,7 +13,10 @@ window.addEventListener('authEvent', ((errorEvent: CustomEvent<AuthServiceError>
          switch (detail.error.response?.status) {
             case 403:
                window.location.replace(routes.verification.url);
-               return;
+               break;
+            case 401:
+               alert('Check your password and email');
+               break;
          }
          break;
    }
